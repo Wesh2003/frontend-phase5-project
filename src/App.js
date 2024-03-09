@@ -3,7 +3,8 @@ import './App.css';
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
 import UserTable from  "./components/UserTable";
-
+import ProductsTable from './components/ProductsTable';
+import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
   const user = {
     username: 'exampleUser',
@@ -16,6 +17,7 @@ function App() {
   return (
     <div>
       <SignUp />
+      {/* <ProductsTable/> */}
       <UserTable  user={user}/>
       < Footer />
 
@@ -24,8 +26,8 @@ function App() {
     
 
   );
-    
+  } 
        
-}
+
 
 export default App;
