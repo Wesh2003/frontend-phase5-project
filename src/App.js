@@ -1,5 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import Receipt from './components/Receipt';
+import CheckoutFor from './components/Checkout_Form';
+import Recommendation from './components/Recommendation';
+import ShoppingCartTable from './components/Shopping_Cart_Table';
 
 function App() {
   return (
