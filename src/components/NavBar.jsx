@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 function NavBar() {
   return (
-      <div style={navStyles}>
+      <div>
       <NavLink to="/" >
         Home
       </NavLink>

@@ -6,11 +6,11 @@
 
 
 import React from 'react';
-import NavBar from '../components/Menu';
+import NavBar from '../components/NavBar';
 import UserTable from  '../components/UserTable';
 
 
-function UserProfile_page() {
+function UserProfilePage() {
   return (
     <div>
         <NavBar/>
@@ -19,6 +19,6 @@ function UserProfile_page() {
   )
 }
 
-export default UserProfile_page
+export default UserProfilePage
 
 
