@@ -12,7 +12,12 @@ import UserProfile_page from  './pages/UserProfile_page' ;
 import Wishlist_page from  './pages/Wishlist_page';
 import Review_Edit_Form from './components/Review_Edit_Form';
 import Shopping_Cart_Table from './components/Shopping_Cart_Table';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Switch} from "react-router-dom";
+
+
+
+
 function App() {
   const user = {
     username: 'exampleUser',
