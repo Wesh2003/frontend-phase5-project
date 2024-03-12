@@ -1,9 +1,8 @@
 
 import './App.css';
-import Receipt from './components/Receipt';
-import CheckoutFor from './components/Checkout_Form';
-import Recommendation from './components/Recommendation';
-import ShoppingCartTable from './components/Shopping_Cart_Table';
+// import CheckoutFor from './components/Checkout_Form';
+// import Recommendation from './components/Recommendation';
+import ShoppingCartTable from './components/ShoppingCartTable';
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
 import UserTable from  "./components/UserTable";
