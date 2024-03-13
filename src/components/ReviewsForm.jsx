@@ -8,7 +8,7 @@ function ReviewsForm() {
 //   const[error, setError]= useState(null);
   const [usernameID, setUsernameID] = useState("");
   const [productID, setProductID] = useState("");
-  const[users, setUsers]= useState([])
+  const [users, setUsers]= useState([])
   const [products, setproducts]= useState([])
   const [description, setDescription]=useState('')
   const [rating, setRating]=useState('')
@@ -17,13 +17,18 @@ function ReviewsForm() {
     useEffect(() => {
         fetch("https://homy-6bvz.onrender.com/users")
             .then((r) => r.json())
-            .then((data) => setUsers(data));
+            .then((data) => {
+                console.log(data)
+                setUsers(data)
+                });
         }, []);
 
     useEffect(() => {
         fetch("https://homy-6bvz.onrender.com/products")
             .then((r) => r.json())
-            .then((data) => setproducts(data));
+            .then((data) => {
+                console.log(data)
+                setproducts(data)});
     }, []);
 
     const handleSubmit = async (e) => {
@@ -86,9 +91,9 @@ function ReviewsForm() {
                         </Form.Select><br/>    
                         <Form.Select name='username_id' value={usernameID} onChange={(e) => setUsernameID(e.target.value)} aria-label="Default select example">
                         <option value="">Select your username</option>
-                            {users.map((user) => (
+                            {Array.isArray(users) && users.map((user) => (
                             <option key={user.id} value={user.id}>
-                                {user.username}
+                                {user.name}
                             </option>
                             ))}
                         </Form.Select><br/>   
