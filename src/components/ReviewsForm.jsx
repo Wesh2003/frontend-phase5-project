@@ -15,15 +15,15 @@ function ReviewsForm() {
 
   
     useEffect(() => {
-        fetch("https://backend-phase5-project.onrender.com/users")
+        fetch("https://homy-6bvz.onrender.com/users")
             .then((r) => r.json())
-            .then(setUsers);
+            .then((data) => setUsers(data));
         }, []);
 
     useEffect(() => {
-        fetch("https://backend-phase5-project.onrender.com/products")
+        fetch("https://homy-6bvz.onrender.com/products")
             .then((r) => r.json())
-            .then(setproducts);
+            .then((data) => setproducts(data));
     }, []);
 
     const handleSubmit = async (e) => {
@@ -35,7 +35,7 @@ function ReviewsForm() {
             rating,
         };
         try {
-            const response = await fetch('https://backend-phase5-project.onrender.com/reviews', {
+            const response = await fetch('https://homy-6bvz.onrender.com/reviews', {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {
