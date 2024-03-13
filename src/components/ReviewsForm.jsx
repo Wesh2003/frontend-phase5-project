@@ -61,7 +61,7 @@ function ReviewsForm() {
   return (
     <div>
         <Container className='mb-5'>
-            <h3 className="text-center mt-3 mb-4">Book Appointment</h3>
+            <h3 className="text-center mt-3 mb-4">Create review</h3>
             <Form onSubmit={handleSubmit}>
                 <Row>
                     <Col>
