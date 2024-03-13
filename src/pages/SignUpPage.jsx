@@ -7,7 +7,7 @@ import React from 'react';
 import SignUp from  '../components/SignUp';
 
 
-function SignUp_page() {
+function SignUpPage() {
   return (
     <div>
         <SignUp/>
@@ -15,5 +15,5 @@ function SignUp_page() {
   )
 }
 
-export default SignUp_page
+export default SignUpPage
 

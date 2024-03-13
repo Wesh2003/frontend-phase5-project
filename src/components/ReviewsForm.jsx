@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect} from "react"
 import {Form,Row,Col,Container, Button} from 'react-bootstrap';
 
-function Reviews_Form() {
+function ReviewsForm() {
 
   const[loading, setLoading]= useState(false);
 //   const[error, setError]= useState(null);
@@ -103,4 +103,4 @@ function Reviews_Form() {
   )
 }
 
-export default Reviews_Form
+export default ReviewsForm

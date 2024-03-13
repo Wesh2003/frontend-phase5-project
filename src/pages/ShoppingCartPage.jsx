@@ -6,20 +6,20 @@
 // Foot
 
 import React from 'react';
-import NavBar from '../components/Menu';
+import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import Shopping_Cart_Table from  '../components/Shopping_Cart_Table';
+import ShoppingCartTable from  '../components/ShoppingCartTable';
 
 
-function ShoppingCart_page() {
+function ShoppingCartPage() {
   return (
     <div>
         <NavBar/>
-        <Shopping_Cart_Table/>
+        <ShoppingCartTable/>
         <Footer/>
     </div>
   )
 }
 
-export default ShoppingCart_page
+export default ShoppingCartPage
 

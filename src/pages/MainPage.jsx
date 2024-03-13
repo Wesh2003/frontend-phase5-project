@@ -8,24 +8,23 @@
 
 
 import React from 'react';
-import NavBar from '../components/Menu';
+import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import SearchBar from  '../components/SearchBar';
-import Search_category from '../components/Search_category';
-import ProductsTable from "./ProductsTable";
-import SearchBar from '../components/SearchBar';
+import SearchCategory from '../components/SearchCategory';
+import ProductsTable from "../components/ProductsTable";
 
 
-function Main_page() {
+function MainPage() {
   return (
     <div>
         <NavBar/>
         <SearchBar/>
-        <Search_category/>
+        <SearchCategory/>
         <ProductsTable/>
         <Footer/>
     </div>
   )
 }
 
-export default Main_page
+export default MainPage

@@ -4,7 +4,7 @@ import {Container, Table, Button} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 
-function Review_Table() {
+function ReviewTable() {
   const  [reviews, setReviews] = useState([])
     useEffect(()=>{
         async function fetchReviewData(){
@@ -72,4 +72,4 @@ function Review_Table() {
   )
 }
 
-export default Review_Table
+export default ReviewTable

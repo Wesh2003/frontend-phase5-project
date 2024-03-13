@@ -1,20 +1,20 @@
 import React from 'react';
 import NavBar from '../components/Menu';
 import Footer from '../components/Footer';
-import Checkout_Form from  '../components/Checkout_Form';
+import CheckoutForm from  '../components/CheckoutForm';
 
 
-function Checkout_info_page() {
+function CheckoutInfoPage() {
   return (
     <div>
         <NavBar/>
-        <Checkout_Form/>
+        <CheckoutForm/>
         <Footer/>
     </div>
   )
 }
 
-export default Checkout_info_page
+export default CheckoutInfoPage
 
 
 // Nav Bar component 

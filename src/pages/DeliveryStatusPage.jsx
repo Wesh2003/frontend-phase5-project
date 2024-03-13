@@ -8,18 +8,18 @@
 import React from 'react';
 import NavBar from '../components/Menu';
 import Footer from '../components/Footer';
-import Receipt_tabe from '../components/Receipt_table';
+import ReceiptTable from '../components/ReceiptTable';
 
 
-function Checkout_info_page() {
+function DeliveryStatusPage() {
   return (
     <div>
         <NavBar/>
-        <Receipt_tabe/>
+        <ReceiptTable/>
         <Footer/>
     </div>
   )
 }
 
-export default Checkout_info_page
+export default DeliveryStatusPage
 

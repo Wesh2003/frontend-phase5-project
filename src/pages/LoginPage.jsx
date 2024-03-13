@@ -3,7 +3,7 @@
 import React from 'react';
 import Login from '../components/Login';
 
-function Login_page() {
+function LoginPage() {
     return (
       <div>
           <Login/>
@@ -11,6 +11,6 @@ function Login_page() {
     )
   }
   
-  export default Login_page
+  export default LoginPage
   
   

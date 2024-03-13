@@ -6,19 +6,19 @@
 // Footer component
 
 import React from 'react';
-import NavBar from '../components/Menu';
+import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import Wishlist_Table from  '../components/Wishlist_Table';
+import WishlistTable from  '../components/WishlistTable';
 
 
-function Wishlist_page() {
+function WishlistPage() {
   return (
     <div>
         <NavBar/>
-        <Wishlist_Table/>
+        <WishlistTable/>
         <Footer/>
     </div>
   )
 }
 
-export default Wishlist_page
+export default WishlistPage
