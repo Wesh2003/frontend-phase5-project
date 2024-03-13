@@ -15,7 +15,7 @@ import ShoppingCartPage from  './pages/ShoppingCartPage';
 import UserProfilePage from  './pages/UserProfilePage' ;
 import WishlistPage from  './pages/WishlistPage';
 import ReviewEditForm from './components/ReviewEditForm';
-import ShoppingCartTable from './components/ShoppingCartTable';
+import ShoppingCart from './components/ShoppingCartTable';
 import { Router, Route, Switch} from "react-router-dom";
 
 
@@ -40,7 +40,7 @@ function App() {
             <Route exact path="/register" ><SignUpPage/></Route>
             <Route exact path="/reviews" ><ReviewsPage/></Route>
             <Route exact path='/shoppingcart'><ShoppingCartPage/></Route>
-            <Route exact path="/shoppingcart/:id" ><ShoppingCartTable/></Route>
+            <Route exact path="/shoppingcart/:id" ><ShoppingCart/></Route>
             <Route exact path="/users" ><UserProfilePage/></Route>
             <Route exact path="/wishlists" ><WishlistPage/></Route>
             <Route exact path="/reviews/:id/edit" ><ReviewEditForm/></Route>
