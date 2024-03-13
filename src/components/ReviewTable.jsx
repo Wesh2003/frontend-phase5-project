@@ -9,7 +9,7 @@ function ReviewTable() {
     useEffect(()=>{
         async function fetchReviewData(){
             try{
-                await fetch('/reviews')
+                await fetch('https://backend-phase5-project.onrender.com/reviews')
                 .then(response => response.json())
                 .then(data => setReviews(data))
             }catch (error){
@@ -21,7 +21,7 @@ function ReviewTable() {
     // console.log(reviews)
 
     function handleDelete(id) {
-        fetch(`/reviews/${id}`, {
+        fetch(`https://backend-phase5-project.onrender.com/reviews/${id}`, {
             method: "DELETE",
             }).then((r) => {
             if (r.ok) {
