@@ -15,13 +15,13 @@ function ReviewsForm() {
 
   
     useEffect(() => {
-        fetch("/users")
+        fetch("https://backend-phase5-project.onrender.com/users")
             .then((r) => r.json())
             .then(setUsers);
         }, []);
 
     useEffect(() => {
-        fetch("/products")
+        fetch("https://backend-phase5-project.onrender.com/products")
             .then((r) => r.json())
             .then(setproducts);
     }, []);
@@ -35,7 +35,7 @@ function ReviewsForm() {
             rating,
         };
         try {
-            const response = await fetch('/appointments', {
+            const response = await fetch('https://backend-phase5-project.onrender.com/reviews', {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {

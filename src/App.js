@@ -2,7 +2,7 @@
 import './App.css';
 // import CheckoutFor from './components/Checkout_Form';
 // import Recommendation from './components/Recommendation';
-import ShoppingCartTable from './components/ShoppingCartTable';
+// import ShoppingCartTable from './components/ShoppingCartTable';
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
 import UserTable from  "./components/UserTable";
@@ -14,9 +14,8 @@ import MainPage from './pages/MainPage' ;
 import ShoppingCartPage from  './pages/ShoppingCartPage';
 import UserProfilePage from  './pages/UserProfilePage' ;
 import WishlistPage from  './pages/WishlistPage';
-import ReviewEditForm from './components/ReviewEditForm';
-import ShoppingCartTable from './components/ShoppingCartTable';
-import { Router, Route, Switch} from "react-router-dom";
+// import ReviewEditForm from './components/ReviewEditForm';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
 
@@ -40,10 +39,10 @@ function App() {
             <Route exact path="/register" ><SignUpPage/></Route>
             <Route exact path="/reviews" ><ReviewsPage/></Route>
             <Route exact path='/shoppingcart'><ShoppingCartPage/></Route>
-            <Route exact path="/shoppingcart/:id" ><ShoppingCartTable/></Route>
-            <Route exact path="/users" ><UserProfilePage/></Route>
-            <Route exact path="/wishlists" ><WishlistPage/></Route>
-            <Route exact path="/reviews/:id/edit" ><ReviewEditForm/></Route>
+            {/* <Route exact path="/shoppingcart/:id"><ShoppingCartTable/></Route> */}
+            <Route exact path="/users"><UserProfilePage/></Route>
+            <Route exact path="/wishlists"><WishlistPage/></Route>
+            {/* <Route exact path="/reviews/:id/edit"><ReviewEditForm/></Route> */}
             {/* <Route exact path="/recommendations" ><Recommendation_Page/></Route> */}
             {/* <Route exact path="/checkout" ><Checkout_info_page/></Route> */}
             {/* <Route exact path="/delivery_status" ><Delivery_status_page/></Route> */}
