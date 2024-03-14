@@ -44,13 +44,13 @@ function Login(){
     return (
         <div>
             <Container className='mb-5'>
-                <h3 className="text-center mt-3 mb-4">Create review</h3>
+                <h3 className="text-center mt-3 mb-4">Login</h3>
                 <Form onSubmit={handleSubmit}>
                     <Row>
                         <Col>
                             <Form.Control name='username' value={username} onChange={(e) => setUsername(e.target.value)} type='text' placeholder="username" /><br/>
-                        </Col>
-                        <Col>
+                        
+
                             <Form.Control name='password' value={password} onChange={(e) => setPassword(e.target.value)} type='text' placeholder="passwword" /><br/>
                         </Col>
                     </Row>

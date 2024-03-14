@@ -10,16 +10,16 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import SearchBar from  '../components/SearchBar';
+// import SearchBar from  '../components/SearchBar';
 // import SearchCategory from '../components/SearchCategory';
 import ProductsTable from "../components/ProductsTable";
 
 
 function MainPage() {
   return (
-    <div>
+    <div className='mainpage'>
         <NavBar/>
-        <SearchBar/>
+        {/* <SearchBar/> */}
         {/* <SearchCategory/> */}
         <ProductsTable/>
         <Footer/>

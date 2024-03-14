@@ -68,10 +68,10 @@ function ProductsTable() {
             </div>
             <div className="row">
                 {handleFilterByCategory().map((item) => (
-                    <div className="col-lg-6 col-md-6 col-sm-12 mb-4" key={item._id}>
+                    <div className="col-lg-6 col-md-6 col-sm-12 mb-4" key={item._id} id = 'entire-card'>
                         <div className="card">
                             <div className="row no-gutters">
-                                <div className="col-md-4">
+                                <div className="col-md-4" id= 'image-div'>
                                     <img
                                         src={item.image}
                                         alt="Product"
@@ -89,7 +89,7 @@ function ProductsTable() {
                                         <div className="d-flex justify-content-between align-items-center">
                                             <button className="btn btn-primary mr-2" onClick={() => handleAddToCart(item)}>Add To Cart</button>
                                             <button className="btn btn-secondary mr-2">Add To Wishlist</button>
-                                            <button className="btn btn-info"><Link to={`/reviews`} className="link">Review</Link></button>
+                                            <button className="btn btn-info"><Link to={`/reviews`} className="link" id = 'reviewbutton'>Review</Link></button>
                                         </div>
                                     </div>
                                 </div>
