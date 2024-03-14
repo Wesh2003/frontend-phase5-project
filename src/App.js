@@ -33,7 +33,7 @@ function App() {
     <div>
       <Router>
           <Switch>
-            <Route exact path ='/'> <MainPage/></Route>
+            <Route exact path ='/'><MainPage/></Route>
             <Route exact path='/products'><ProductsTable/></Route>
             <Route exact path='/login'><LoginPage/></Route>
             <Route exact path="/register" ><SignUpPage/></Route>

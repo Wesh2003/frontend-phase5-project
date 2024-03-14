@@ -11,7 +11,7 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import SearchBar from  '../components/SearchBar';
-import SearchCategory from '../components/SearchCategory';
+// import SearchCategory from '../components/SearchCategory';
 import ProductsTable from "../components/ProductsTable";
 
 
@@ -20,7 +20,7 @@ function MainPage() {
     <div>
         <NavBar/>
         <SearchBar/>
-        <SearchCategory/>
+        {/* <SearchCategory/> */}
         <ProductsTable/>
         <Footer/>
     </div>
