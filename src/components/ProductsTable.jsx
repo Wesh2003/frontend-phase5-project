@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import CategoryFilter from './CategoryFilter';
+import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ProductsTable() {
     const [products, setProducts] = useState([]);
@@ -25,6 +27,35 @@ function ProductsTable() {
     };
 
     const categories = ['All Categories', ...new Set(products.map(item => item.category))];
+
+    function handleAddToCart(item){
+        const formData = {
+            name: item.name,
+            description: item.description,
+            price: item.price,
+            quantity:item.quantity,
+            category:item.category,
+        };
+        try {
+            const response = fetch('https://homy-6bvz.onrender.com/shoppingcart', {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            window.prompt('not pushed')
+        } catch (error) {
+            // Handle error
+            window.prompt('not pushed')
+        } finally {
+            window.location.reload();
+        }
+
+    }
 
     return (
         <div className="container">
@@ -56,9 +87,9 @@ function ProductsTable() {
                                         <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p>
                                         <p className="card-text"><strong>Category:</strong> {item.category}</p>
                                         <div className="d-flex justify-content-between align-items-center">
-                                            <button className="btn btn-primary mr-2">Add To Cart</button>
+                                            <button className="btn btn-primary mr-2" onClick={() => handleAddToCart(item)}>Add To Cart</button>
                                             <button className="btn btn-secondary mr-2">Add To Wishlist</button>
-                                            <button className="btn btn-info">Review</button>
+                                            <button className="btn btn-info"><Link to={`/reviews`} className="link">Review</Link></button>
                                         </div>
                                     </div>
                                 </div>

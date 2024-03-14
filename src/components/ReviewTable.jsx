@@ -9,9 +9,13 @@ function ReviewTable() {
     useEffect(()=>{
         async function fetchReviewData(){
             try{
-                await fetch('https://backend-phase5-project.onrender.com/reviews')
+                await fetch('https://homy-6bvz.onrender.com/reviews')
                 .then(response => response.json())
-                .then(data => setReviews(data))
+                .then(data => {
+                    console.log("Here is data table")
+                    console.log(data)
+                    setReviews(data)
+                })
             }catch (error){
                 console.log('Error: ', error)
             }
@@ -21,7 +25,7 @@ function ReviewTable() {
     // console.log(reviews)
 
     function handleDelete(id) {
-        fetch(`https://backend-phase5-project.onrender.com/reviews/${id}`, {
+        fetch(`https://homy-6bvz.onrender.com/reviews/${id}`, {
             method: "DELETE",
             }).then((r) => {
             if (r.ok) {
@@ -53,7 +57,7 @@ function ReviewTable() {
                     </tr>
                 </thead>
                 <tbody>
-                {reviews.map(item => (
+                {Array.isArray(reviews) && reviews.map(item => (
                         <tr key={item.id}>
                         <td>{item.id}</td>
                         <td>{item.description}</td>
