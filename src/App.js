@@ -1,8 +1,6 @@
 
 import './App.css';
-// import CheckoutFor from './components/Checkout_Form';
-// import Recommendation from './components/Recommendation';
-import ShoppingCartTable from './components/ShoppingCartTable';
+
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
 import UserTable from  "./components/UserTable";
@@ -16,7 +14,7 @@ import UserProfilePage from  './pages/UserProfilePage' ;
 import WishlistPage from  './pages/WishlistPage';
 import ReviewEditForm from './components/ReviewEditForm';
 import ShoppingCartTable from './components/ShoppingCartTable';
-import { Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
 
@@ -40,7 +38,7 @@ function App() {
             <Route exact path="/register" ><SignUpPage/></Route>
             <Route exact path="/reviews" ><ReviewsPage/></Route>
             <Route exact path='/shoppingcart'><ShoppingCartPage/></Route>
-            <Route exact path="/shoppingcart/:id" ><ShoppingCartTable/></Route>
+            {/* <Route exact path="/shoppingcart/:id" ><ShoppingCartTable/></Route> */}
             <Route exact path="/users" ><UserProfilePage/></Route>
             <Route exact path="/wishlists" ><WishlistPage/></Route>
             <Route exact path="/reviews/:id/edit" ><ReviewEditForm/></Route>

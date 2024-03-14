@@ -17,4 +17,4 @@ export function LinkedinIcon(){
     return <FaLinkedin />;
 }
 
-//export default FontAwesomeIcons;
+// export default FontAwesomeIcons;
