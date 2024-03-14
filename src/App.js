@@ -1,6 +1,6 @@
 
 import './App.css';
-// import CheckoutFor from './components/Checkout_Form';
+import CheckoutInfoPage from './pages/CheckoutInfoPage';
 // import Recommendation from './components/Recommendation';
 // import ShoppingCartTable from './components/ShoppingCartTable';
 import Footer from './components/Footer';
@@ -44,7 +44,7 @@ function App() {
             <Route exact path="/wishlists"><WishlistPage/></Route>
             {/* <Route exact path="/reviews/:id/edit"><ReviewEditForm/></Route> */}
             {/* <Route exact path="/recommendations" ><Recommendation_Page/></Route> */}
-            {/* <Route exact path="/checkout" ><Checkout_info_page/></Route> */}
+            <Route exact path="/checkout" ><CheckoutInfoPage/></Route>
             {/* <Route exact path="/delivery_status" ><Delivery_status_page/></Route> */}
 
             <SignUp />
