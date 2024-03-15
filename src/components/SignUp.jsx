@@ -19,7 +19,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Send signup request to backend(this deployment code doesn't work, but the backend code is fine)
+      // Send signup request to backend(this deployment link doesn't work, but the backend code is fine)
       const response = await fetch('https://homy-6bvz.onrender.com/register', {
         method: 'POST',
         headers: {
