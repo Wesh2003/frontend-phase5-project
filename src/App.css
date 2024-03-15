@@ -57,15 +57,15 @@
 }
 .card-body:hover{
   border-width: thick;
-  background-color: black;
+  background-color: rgb(207, 78, 78);
   color: white;
 }
 .card-text{
   color: black;
 }
-.card-img{
+/* .card-img{
   object-fit: cover;
-}
+} */
 #image-div{
   object-fit: cover;
   background-color: #F7EEDD;
@@ -80,7 +80,11 @@
   animation-name: pulse;
   animation-duration: 2s;
   animation-iteration-count: infinite;
+  background-color: #282c34;
   box-shadow: 5px 7px rgb(109, 214, 207);
+  color: rgb(44, 17, 248);
+}
+.card:hover .card-text,.card:hover .card-title{
   color: white;
 }
 @keyframes pulse {
