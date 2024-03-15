@@ -5,7 +5,7 @@ function SignUp() {
     username: '',
     email: '',
     phone: '', // Added phone state
-    password: ''
+    password: '',
   });
 
   const handleChange = (e) => {
@@ -19,7 +19,9 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+
       // Send signup request to backend
+
       const response = await fetch('https://backend-phase5-project-1sau.onrender.com/register', {
         method: 'POST',
         headers: {
@@ -30,7 +32,7 @@ function SignUp() {
       console.log(response);
       if (response.ok) {
         // Redirect to products page upon successful signup
-        window.location.replace('/products'); 
+        window.location.replace('/login'); 
       } else {
         // Handle signup error
         console.error('Signup failed');
@@ -46,7 +48,7 @@ function SignUp() {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />
+          <input type="text" id="username" name="username" value={formData.name} onChange={handleChange} required />
         </div>
         <div>
           <label htmlFor="email">Email:</label>

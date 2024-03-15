@@ -2,10 +2,43 @@ import React, { useState } from 'react';
 import { Form, Row, Col, Container, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const history = useHistory();
+function Login(){
+    //   const[error, setError]= useState(null);
+    const [users, setUsers]= useState([])
+    const [username, setUsername]=useState('')
+    const [password, setPassword]=useState('')
+    const history = useHistory();
+    
+      
+        useEffect(() => {
+            fetch("https://backend-phase5-project-1sau.onrender.com/users")
+                .then((r) => r.json())
+                .then((data) => {
+                    console.log(data)
+                    setUsers(data)
+                    });
+            }, []);
+    
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+            const formData = {
+                username,
+                password,
+            };
+            console.log(formData)
+            for(let user in users){
+                if ((formData.username === user.name) && (formData.password === user.password)){
+                    history.push('https://backend-phase5-project-1sau.onrender.com')
+                    break
+                }
+                else {
+                    window.alert('User does not exist or either the user name or password are incorrect')
+                    history.push('https://backend-phase5-project-1sau.onrender.com/signup')
+                    break
+                }
+            }
+        };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
