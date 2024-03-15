@@ -14,10 +14,7 @@ function UserTable({ user }) {
             <td><strong>Email:</strong></td>
             <td>{user.email}</td>
           </tr>
-          <tr>
-            <td><strong>Password:</strong></td>
-            <td>{user.password}</td>
-          </tr>
+          
           <tr>
             <td><strong>Phone:</strong></td>
             <td>{user.phone}</td>

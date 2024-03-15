@@ -1,4 +1,4 @@
-
+import React, {useState} from 'react';
 import './App.css';
 import CheckoutInfoPage from './pages/CheckoutInfoPage';
 // import Recommendation from './components/Recommendation';
@@ -22,21 +22,15 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
 function App() {
-  const user = {
-    username: 'exampleUser',
-    email: 'example@example.com',
-    password: 'John',
-    phone: 720978654,
-    
-  };
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false); 
+  
   return (
     <div>
       <Router>
           <Switch>
-            <Route exact path ='/'><MainPage/></Route>
+            <Route exact path ='/'><MainPage isAuthenticated={isAuthenticated}/></Route>
             <Route exact path='/products'><ProductsTable/></Route>
-            <Route exact path='/login'><LoginPage/></Route>
+            <Route exact path='/login'><LoginPage setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} /></Route>
             <Route exact path="/register" ><SignUpPage/></Route>
             <Route exact path="/reviews" ><ReviewsPage/></Route>
             <Route exact path='/shoppingcart'><ShoppingCartPage/></Route>
@@ -50,7 +44,7 @@ function App() {
 
             <SignUp />
             {/* <ProductsTable/> */}
-            <UserTable  user={user}/>
+            <UserTable  />
             <Footer />
           </Switch>
       </Router>

@@ -2,58 +2,45 @@ import React, { useState } from 'react';
 import { Form, Row, Col, Container, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
-function Login(){
-    //   const[error, setError]= useState(null);
-    const [users, setUsers]= useState([])
-    // const [username, setUsername]=useState('')
-    // const [password, setPassword]=useState('')
-    const [formDataa, setFormDataa]=useState({
-        username: '',
-        password: '',
-      })
-    const history = useHistory();
-    
-      
-        useEffect(() => {
-            fetch("https://backend-phase5-project-1sau.onrender.com/users")
-                .then((r) => r.json())
-                .then((data) => {
-                    console.log(data)
-                    setUsers(data)
-                    });
-            }, []);
-    
-        const handleChange = (e) => {
-            const { name, value } = e.target;
-            setFormDataa({
-              ...formDataa,
-              [name]: value
-            });
-        };
-        const handleSubmit = async (e) => {
-            // for(let user in users){
-                e.preventDefault()
-                const foundUser = users.find(user => user.name === formDataa.username);
-                console.log(formDataa)
-                if (!foundUser) {
-                    window.alert('User does not exist');
-                    history.push('https://backend-phase5-project-1sau.onrender.com/signup')
-                }
-                if (foundUser.password === formDataa.password){
-                    history.push('/')
-                    console.log('Successfuly logged in')
-                    // break
-                }
-                else {
-                    window.alert('Incorrect password');
-                    // break
-                }
-            // }
-        };
+function Login({ isAuthenticated, setIsAuthenticated }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useHistory();
 
+  const handleLogout = () => {
+    setIsAuthenticated(false); // Set authentication status to false
+    // You can perform any other necessary actions here
+    history.push('/login'); // Redirect to the login page
+  };
 
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+    history.push('/');
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('https://backend-phase5-project-1sau.onrender.com/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
 
+      if (response.ok) {
+        handleLogin();
+      } else {
+        window.alert(data.message || 'Login failed');
+        handleLogout();
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      window.alert('Login failed. Please try again later.');
+    }
+  };
 
     return (
         <div>

@@ -1,30 +1,24 @@
 
-
-// Nav bar 
-// products table component 
-// Search Bar component
-// Search category component 
-// Footer component
-
-
-import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-// import SearchBar from  '../components/SearchBar';
-// import SearchCategory from '../components/SearchCategory';
 import ProductsTable from "../components/ProductsTable";
 
+function MainPage({isAuthenticated}) {
+  // State to track authentication status
+ 
 
-function MainPage() {
+  
+
   return (
     <div className='mainpage'>
-        <NavBar/>
-        {/* <SearchBar/> */}
-        {/* <SearchCategory/> */}
-        <ProductsTable/>
-        <Footer/>
+      <NavBar 
+        isAuthenticated={isAuthenticated} // Pass the authentication state here
+       // Pass the handleLogout function
+      />
+      <ProductsTable/>
+      <Footer/>
     </div>
-  )
+  );
 }
 
-export default MainPage
+export default MainPage;
