@@ -3,10 +3,10 @@
 import React from 'react';
 import Login from '../components/Login';
 
-function LoginPage() {
+function LoginPage({isAuthenticated, setIsAuthenticated}) {
     return (
       <div>
-          <Login/>
+          <Login setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated}/>
       </div>
     )
   }

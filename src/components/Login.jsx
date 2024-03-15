@@ -2,10 +2,21 @@ import React, { useState } from 'react';
 import { Form, Row, Col, Container, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
-function Login() {
+function Login({ isAuthenticated, setIsAuthenticated }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
+
+  const handleLogout = () => {
+    setIsAuthenticated(false); // Set authentication status to false
+    // You can perform any other necessary actions here
+    history.push('/login'); // Redirect to the login page
+  };
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+    history.push('/');
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,11 +31,10 @@ function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        // Successful login, redirect to home page or dashboard
-        history.push('/'); // Change to the appropriate route
+        handleLogin();
       } else {
-        // Display error message
         window.alert(data.message || 'Login failed');
+        handleLogout();
       }
     } catch (error) {
       console.error('Login error:', error);
