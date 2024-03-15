@@ -50,7 +50,7 @@ function ProductsTable() {
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
-                                        <h5 className="card-title" style={{ color: "darkgrey" }}>{item.name}</h5>
+                                        <h5 className="card-title" style={{ color: "black", fontWeight: "bold"}}>{item.name}</h5>
                                         <p className="card-text"><strong>Description:</strong> {item.description}</p>
                                         <p className="card-text"><strong>Price:</strong> {item.price}</p>
                                         <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p>
