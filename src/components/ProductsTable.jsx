@@ -3,6 +3,7 @@ import SearchBar from './SearchBar';
 import CategoryFilter from './CategoryFilter';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import AddToWishlist from './AddToWishlist';
 
 function ProductsTable() {
     const [products, setProducts] = useState([]);
@@ -55,7 +56,30 @@ function ProductsTable() {
             window.location.reload();
         }
 
-    }
+    } function handleAddToWishlist(productId) {
+        fetch('https://backend-phase5-project-1sau.onrender.com/wishlists/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            },
+          body: JSON.stringify({ product_id: productId }),
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Could not add to wishlist');
+          }
+          return response.json();
+        })
+        .then(data => {
+          alert(data.message);
+          
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      }
+   
+
 
     return (
         <div className="container">
@@ -81,6 +105,7 @@ function ProductsTable() {
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
+      
                                         <h5 className="card-title" style={{ color: "darkgrey" }}>{item.name}</h5>
                                         <p className="card-text"><strong>Description:</strong> {item.description}</p>
                                         <p className="card-text"><strong>Price:</strong> {item.price}</p>
@@ -88,7 +113,7 @@ function ProductsTable() {
                                         <p className="card-text"><strong>Category:</strong> {item.category}</p>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <button className="btn btn-primary mr-2" onClick={() => handleAddToCart(item)}>Add To Cart</button>
-                                            <button className="btn btn-secondary mr-2">Add To Wishlist</button>
+                                            <button className="btn btn-secondary mr-2" onClick={() => handleAddToWishlist(item._id)}>Add To Wishlist</button>
                                             <button className="btn btn-info"><Link to={`/reviews`} className="link" id = 'reviewbutton'>Review</Link></button>
                                         </div>
                                     </div>
