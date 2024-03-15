@@ -6,8 +6,12 @@ import { useHistory } from 'react-router-dom';
 function Login(){
     //   const[error, setError]= useState(null);
     const [users, setUsers]= useState([])
-    const [username, setUsername]=useState('')
-    const [password, setPassword]=useState('')
+    // const [username, setUsername]=useState('')
+    // const [password, setPassword]=useState('')
+    const [formDataa, setFormDataa]=useState({
+        username: '',
+        password: '',
+      })
     const history = useHistory();
     
       
@@ -20,24 +24,32 @@ function Login(){
                     });
             }, []);
     
+        const handleChange = (e) => {
+            const { name, value } = e.target;
+            setFormDataa({
+              ...formDataa,
+              [name]: value
+            });
+        };
         const handleSubmit = async (e) => {
-            e.preventDefault();
-            const formData = {
-                username,
-                password,
-            };
-            console.log(formData)
-            for(let user in users){
-                if ((formData.username === user.name) && (formData.password === user.password)){
-                    history.push('https://backend-phase5-project-1sau.onrender.com')
-                    break
+            // for(let user in users){
+                e.preventDefault()
+                const foundUser = users.find(user => user.name === formDataa.username);
+                console.log(formDataa)
+                if (!foundUser) {
+                    window.alert('User does not exist');
+                    history.push('https://backend-phase5-project-1sau.onrender.com/signup')
+                }
+                if (foundUser.password === formDataa.password){
+                    history.push('/')
+                    console.log('Successfuly logged in')
+                    // break
                 }
                 else {
-                    window.alert('User does not exist or either the user name or password are incorrect')
-                    history.push('https://backend-phase5-project-1sau.onrender.com/signup')
-                    break
+                    window.alert('Incorrect password');
+                    // break
                 }
-            }
+            // }
         };
 
 
@@ -51,10 +63,8 @@ function Login(){
                 <Form onSubmit={handleSubmit}>
                     <Row>
                         <Col>
-                            <Form.Control name='username' value={username} onChange={(e) => setUsername(e.target.value)} type='text' placeholder="username" /><br/>
-                        
-
-                            <Form.Control name='password' value={password} onChange={(e) => setPassword(e.target.value)} type='text' placeholder="passwword" /><br/>
+                            <Form.Control name='username' value={formDataa.username} onChange={handleChange} type='text' placeholder="username" /><br/>
+                            <Form.Control name='password' value={formDataa.password} onChange={handleChange} type='password' placeholder="passwword" /><br/>
                         </Col>
                     </Row>
                     <Button variant="primary" type="submit">
