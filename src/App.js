@@ -14,6 +14,7 @@ import MainPage from './pages/MainPage' ;
 import ShoppingCartPage from  './pages/ShoppingCartPage';
 import UserProfilePage from  './pages/UserProfilePage' ;
 import WishlistPage from  './pages/WishlistPage';
+import DeliveryStatusPage from './pages/DeliveryStatusPage';
 // import ReviewEditForm from './components/ReviewEditForm';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -39,7 +40,7 @@ function App() {
             {/* <Route exact path="/reviews/:id/edit"><ReviewEditForm/></Route> */}
             {/* <Route exact path="/recommendations" ><Recommendation_Page/></Route> */}
             <Route exact path="/checkout" ><CheckoutInfoPage/></Route>
-            {/* <Route exact path="/delivery_status" ><Delivery_status_page/></Route> */}
+            <Route exact path="/deliverystatus" ><DeliveryStatusPage/></Route>
 
             <SignUp />
             {/* <ProductsTable/> */}

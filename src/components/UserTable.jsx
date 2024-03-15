@@ -8,7 +8,7 @@ function UserTable({ user }) {
         <tbody>
           <tr>
             <td><strong>Username:</strong></td>
-            <td>{user.username}</td>
+            <td>{user.name}</td>
           </tr>
           <tr>
             <td><strong>Email:</strong></td>
