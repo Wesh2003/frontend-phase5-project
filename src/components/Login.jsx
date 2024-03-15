@@ -1,6 +1,5 @@
-import React from 'react'
-import { useState, useEffect} from "react"
-import {Form,Row,Col,Container, Button} from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Form, Row, Col, Container, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
 function Login(){
@@ -77,6 +76,4 @@ function Login(){
     
 }
 
-export default Login 
-
-
+export default Login;
