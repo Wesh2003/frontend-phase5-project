@@ -33,8 +33,7 @@ const UserTable = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Trigger fetchUserData when the search button is clicked
-    setUserData(null); // Clear previous user data
+    setUserData(null); 
     setSearchUsername(e.target.elements.username.value.trim());
   };
 
