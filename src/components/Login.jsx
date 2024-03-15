@@ -12,7 +12,7 @@ function Login(){
     
       
         useEffect(() => {
-            fetch("https://homy-6bvz.onrender.com/users")
+            fetch("https://backend-phase5-project-1sau.onrender.com/users")
                 .then((r) => r.json())
                 .then((data) => {
                     console.log(data)
@@ -26,13 +26,16 @@ function Login(){
                 username,
                 password,
             };
+            console.log(formData)
             for(let user in users){
-                if (formData.name === user.name & formData.password === user.password){
-                    history.push('https://homy-6bvz.onrender.com')
+                if ((formData.username === user.name) && (formData.password === user.password)){
+                    history.push('https://backend-phase5-project-1sau.onrender.com')
+                    break
                 }
                 else {
-                    window.prompt('User does not exist or either the user name or password are incorrect')
-                    history.push('https://homy-6bvz.onrender.com/signup')
+                    window.alert('User does not exist or either the user name or password are incorrect')
+                    history.push('https://backend-phase5-project-1sau.onrender.com/signup')
+                    break
                 }
             }
         };

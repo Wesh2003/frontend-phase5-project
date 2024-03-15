@@ -9,7 +9,7 @@ function ProductsTable() {
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
 
     useEffect(() => {
-        fetch("https://homy-6bvz.onrender.com/products")
+        fetch("https://backend-phase5-project-1sau.onrender.com/products")
             .then(response => response.json())
             .then((data) => setProducts(data));
     }, []);
