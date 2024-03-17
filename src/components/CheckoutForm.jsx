@@ -44,7 +44,7 @@ function CheckoutForm({ onSubmit }) {
     .then(data => {
       // Update the UI with the updated receipt items
       // This could involve rendering the receipt table with the new data
-      renderReceiptTable(data);
+    // newreceiptTable(data);
     })
     .catch(error => {
       console.error('Error adding item to receipt:', error);
