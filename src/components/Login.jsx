@@ -42,25 +42,40 @@ function Login({ isAuthenticated, setIsAuthenticated }) {
     }
   };
 
-    return (
-        <div>
-            <Container className='mb-5'>
-                <h3 className="text-center mt-3 mb-4">Login</h3>
-                <Form onSubmit={handleSubmit}>
-                    <Row>
-                        <Col>
-                            <Form.Control name='username' value={formDataa.username} onChange={handleChange} type='text' placeholder="username" /><br/>
-                            <Form.Control name='password' value={formDataa.password} onChange={handleChange} type='password' placeholder="passwword" /><br/>
-                        </Col>
-                    </Row>
-                    <Button variant="primary" type="submit">
-                        Login
-                    </Button>
-                </Form>
-            </Container>
-        </div>
-      )
-    
+  return (
+    <div>
+      <Container className="mb-5">
+        <h3 className="text-center mt-3 mb-4">Login</h3>
+        <Form onSubmit={handleSubmit}>
+          <Row>
+            <Col>
+              <Form.Control
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </Col>
+          </Row>
+          <Button variant="primary" type="submit">
+            Login
+          </Button>
+        </Form>
+      </Container>
+    </div>
+  );
 }
 
 export default Login;
