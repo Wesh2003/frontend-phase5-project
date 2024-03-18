@@ -5,7 +5,7 @@ import CheckoutInfoPage from './pages/CheckoutInfoPage';
 // import ShoppingCartTable from './components/ShoppingCartTable';
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
-import UserTable from  "./components/UserTable";
+import UserProfile from  "./components/UserTable";
 import ProductsTable from './components/ProductsTable';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
@@ -17,7 +17,7 @@ import WishlistPage from  './pages/WishlistPage';
 import DeliveryStatusPage from './pages/DeliveryStatusPage';
 import CustomerCarePage from  './pages/CustomerCarePage';
 // import ReviewEditForm from './components/ReviewEditForm';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import HelpPage from './pages/HelpPage';
 
 
@@ -29,7 +29,7 @@ function App() {
   const handleLogin = (userId) => {
     setIsAuthenticated(true);
     setUserId(userId); // Store the user ID
-    history.push('/userprofile');
+    
   };
  
 
@@ -41,7 +41,7 @@ function App() {
           <Switch>
             <Route exact path ='/'><MainPage isAuthenticated={isAuthenticated}/></Route>
             <Route exact path='/products'><ProductsTable/></Route>
-            <Route exact path='/login'><LoginPage setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} handleLogin={handleLogin} setUserId={setUserId}/></Route>
+            <Route exact path='/login'><LoginPage handleLogin={handleLogin} setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated}  setUserId={setUserId}/></Route>
             <Route exact path="/register" ><SignUpPage/></Route>
             <Route exact path="/reviews" ><ReviewsPage/></Route>
             <Route exact path='/shoppingcart'><ShoppingCartPage/></Route>
@@ -57,7 +57,7 @@ function App() {
 
             <SignUp />
             {/* <ProductsTable/> */}
-            <UserTable  />
+            <UserProfile  userId={userId}/>
             <Footer />
           </Switch>
       </Router>
