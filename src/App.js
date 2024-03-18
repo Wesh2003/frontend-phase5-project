@@ -29,7 +29,7 @@ function App() {
   const handleLogin = (userId) => {
     setIsAuthenticated(true);
     setUserId(userId); // Store the user ID
-    Redirect('/userprofile');
+    history.push('/userprofile');
   };
  
 
