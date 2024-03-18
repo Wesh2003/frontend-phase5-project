@@ -16,13 +16,22 @@ import UserProfilePage from  './pages/UserProfilePage' ;
 import WishlistPage from  './pages/WishlistPage';
 import DeliveryStatusPage from './pages/DeliveryStatusPage';
 // import ReviewEditForm from './components/ReviewEditForm';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
 
 
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false); 
+  const [userId, setUserId] = useState(null);
+  const handleLogin = (userId) => {
+    setIsAuthenticated(true);
+    setUserId(userId); // Store the user ID
+    Redirect('/userprofile');
+  };
+ 
+
+
   
   return (
     <div>
@@ -30,12 +39,12 @@ function App() {
           <Switch>
             <Route exact path ='/'><MainPage isAuthenticated={isAuthenticated}/></Route>
             <Route exact path='/products'><ProductsTable/></Route>
-            <Route exact path='/login'><LoginPage setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} /></Route>
+            <Route exact path='/login'><LoginPage setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} handleLogin={handleLogin} setUserId={setUserId}/></Route>
             <Route exact path="/register" ><SignUpPage/></Route>
             <Route exact path="/reviews" ><ReviewsPage/></Route>
             <Route exact path='/shoppingcart'><ShoppingCartPage/></Route>
             {/* <Route exact path="/shoppingcart/:id"><ShoppingCartTable/></Route> */}
-            <Route exact path="/users"><UserProfilePage/></Route>
+            <Route exact path="/userprofile">{isAuthenticated ? <UserProfilePage userId={userId}/> : <Redirect to='/login' />}</Route>
             <Route exact path="/wishlists"><WishlistPage/></Route>
             {/* <Route exact path="/reviews/:id/edit"><ReviewEditForm/></Route> */}
             {/* <Route exact path="/recommendations" ><Recommendation_Page/></Route> */}
@@ -52,8 +61,8 @@ function App() {
 
     
 
-  );
-  } 
+  );  };
+   
        
 
 

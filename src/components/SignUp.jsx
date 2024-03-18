@@ -32,7 +32,7 @@ function SignUp() {
       console.log(response);
       if (response.ok) {
         // Redirect to products page upon successful signup
-        window.location.replace('/login'); 
+        window.location.replace('/'); 
       } else {
         // Handle signup error
         console.error('Signup failed');
