@@ -42,6 +42,8 @@ function SignUp() {
     }
   };
 
+  // this is a comment
+
   return (
     <div>
       <h2>Sign Up</h2>

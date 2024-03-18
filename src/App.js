@@ -15,8 +15,10 @@ import ShoppingCartPage from  './pages/ShoppingCartPage';
 import UserProfilePage from  './pages/UserProfilePage' ;
 import WishlistPage from  './pages/WishlistPage';
 import DeliveryStatusPage from './pages/DeliveryStatusPage';
+import CustomerCarePage from  './pages/CustomerCarePage';
 // import ReviewEditForm from './components/ReviewEditForm';
-import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import HelpPage from './pages/HelpPage';
 
 
 
@@ -50,6 +52,8 @@ function App() {
             {/* <Route exact path="/recommendations" ><Recommendation_Page/></Route> */}
             <Route exact path="/checkout" ><CheckoutInfoPage/></Route>
             <Route exact path="/deliverystatus" ><DeliveryStatusPage/></Route>
+            <Route exact path="/customercare"><CustomerCarePage/></Route>
+            <Route exact path="/help"><HelpPage/></Route>
 
             <SignUp />
             {/* <ProductsTable/> */}
