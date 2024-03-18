@@ -121,3 +121,57 @@
   background-color: rgb(52, 52, 52);
   color: white;
 }
+.CustCare{
+  /* background-color: #61dafb; */
+  width: 600px;
+  height: 500px;
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 90px;
+  padding: 20px 20px 20px 40px;
+}
+.CustCare p{
+  margin-top: 40px;
+}
+.img{
+  margin-top: -100px;
+  margin-right: 0px;
+  width: 700px;
+  height: 700px;
+  object-fit: scale-down;
+}
+.customer-care{
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 900px;
+  background-color: rgb(250, 200, 108);
+}
+#helpbutton{
+  text-decoration: none;
+  font-size: large;
+  font-weight: bold;
+  color: black;
+}
+.helpHeading{
+  border-width: 2px;
+  border-style: solid;
+  width: 600px;
+
+}
+.help-page{
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 0px;
+  padding-right: 0px;
+  height: 900px;
+  background-color: rgb(255, 255, 123);
+}
+.Helpp{
+  width: 600px;
+  height: 500px;
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 90px;
+  padding: 20px 20px 20px 40px;
+}
