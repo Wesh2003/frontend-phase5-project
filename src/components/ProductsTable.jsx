@@ -34,6 +34,7 @@ function ProductsTable() {
             name: item.name,
             description: item.description,
             price: item.price,
+            image: item.image_url,
             quantity:item.quantity,
             category:item.category,
         };
@@ -97,10 +98,10 @@ function ProductsTable() {
                             <div className="row no-gutters">
                                 <div className="col-md-4" id= 'image-div'>
                                     <img
-                                        src={item.image}
+                                        src={item.image_url}
                                         alt="Product"
                                         className="card-img"
-                                        style={{ objectFit: 'contain' }}
+                                        style={{ objectFit: 'auto' }}
                                     />
                                 </div>
                                 <div className="col-md-8">

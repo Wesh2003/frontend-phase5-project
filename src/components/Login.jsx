@@ -2,24 +2,12 @@ import React, { useState } from 'react';
 import { Form, Row, Col, Container, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
-function Login({ isAuthenticated, setIsAuthenticated }) {
+function Login({ setIsAuthenticated, setUserId }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
 
-  const handleLogout = () => {
-    setIsAuthenticated(false); // Set authentication status to false
-    // You can perform any other necessary actions here
-    history.push('/login'); // Redirect to the login page
-  };
-
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-    history.push('/');
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleLogin = async () => {
     try {
       const response = await fetch('https://backend-phase5-project-1sau.onrender.com/users', {
         method: 'POST',
@@ -29,17 +17,26 @@ function Login({ isAuthenticated, setIsAuthenticated }) {
         body: JSON.stringify({ email, password }),
       });
       const data = await response.json();
+      console.log(response)
 
       if (response.ok) {
-        handleLogin();
+        const { userId } = data; // Extract userId from response data
+        
+        setIsAuthenticated(true);
+        setUserId(userId); 
+        history.push('/');
       } else {
         window.alert(data.message || 'Login failed');
-        handleLogout();
       }
     } catch (error) {
       console.error('Login error:', error);
       window.alert('Login failed. Please try again later.');
     }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await handleLogin();
   };
 
   return (
