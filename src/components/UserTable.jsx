@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function UserProfile({ userId }) {
-  const history = useHistory();
   const [user, setUser] = useState(null);
 
   const fetchUserData = async (userId) => {
@@ -18,11 +17,8 @@ function UserProfile({ userId }) {
   useEffect(() => {
     if (userId) {
       fetchUserData(userId);
-    } else {
-      // If userId is not provided, redirect to login page
-      history.push('/login');
     }
-  }, [userId, history]); // Include userId and history in the dependency array
+  }, [userId]);
 
   return (
     <div>
@@ -38,4 +34,4 @@ function UserProfile({ userId }) {
   );
 }
 
-export default UserProfile;
+export default UserProfile
