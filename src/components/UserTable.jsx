@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const UserTable = () => {
   const [userData, setUserData] = useState(null);
-  const [searchUsername, setSearchUsername] = useState('');
+  const [searchname, setSearchname] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -12,7 +12,7 @@ const UserTable = () => {
       setError('');
 
       try {
-        const response = await fetch(`https://backend-phase5-project-1sau.onrender.com/${searchUsername}`);
+        const response = await fetch(`https://backend-phase5-project.onrender.com/${searchname}`);
         if (!response.ok) {
           throw new Error('Failed to fetch user data');
         }
@@ -26,23 +26,23 @@ const UserTable = () => {
       }
     };
 
-    if (searchUsername.trim() !== '') {
+    if (searchname !== '') {
       fetchUserData();
     }
-  }, [searchUsername]);
+  }, [searchname]);
 
   const handleSearch = (e) => {
     e.preventDefault();
     // Trigger fetchUserData when the search button is clicked
     setUserData(null); // Clear previous user data
-    setSearchUsername(e.target.elements.username.value.trim());
+    setSearchname(e.target.elements.name);
   };
 
   return (
     <div>
       <h2>User Profile</h2>
       <form onSubmit={handleSearch}>
-        <input type="text" name="username" placeholder="Enter username" />
+        <input type="text" name="name" placeholder="Enter name" />
         <button type="submit">Search</button>
       </form>
       {loading ? (
@@ -51,13 +51,13 @@ const UserTable = () => {
         <p>{error}</p>
       ) : userData ? (
         <div>
-          <p><strong>Username:</strong> {userData.username}</p>
+          <p><strong>name:</strong> {userData.name}</p>
           <p><strong>Email:</strong> {userData.email}</p>
           <p><strong>Password:</strong> {userData.password}</p>
           <p><strong>Phone:</strong> {userData.phone}</p>
         </div>
       ) : (
-        <p>Enter a username to search</p>
+        <p>Enter a name to search</p>
       )}
     </div>
   );

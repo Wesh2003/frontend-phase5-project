@@ -15,7 +15,7 @@ function ReviewsForm() {
 
   
     useEffect(() => {
-        fetch("https://homy-6bvz.onrender.com/users")
+        fetch("https://backend-phase5-project.onrender.com/users")
             .then((r) => r.json())
             .then((data) => {
                 console.log(data)
@@ -24,7 +24,7 @@ function ReviewsForm() {
         }, []);
 
     useEffect(() => {
-        fetch("https://homy-6bvz.onrender.com/products")
+        fetch("https://backend-phase5-project.onrender.com/products")
             .then((r) => r.json())
             .then((data) => {
                 console.log(data)
@@ -34,13 +34,14 @@ function ReviewsForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = {
-            username_id: parseInt(usernameID),
+            user_id: parseInt(usernameID),
             product_id: parseInt(productID),
             description,
             rating,
         };
+        console.log(formData)
         try {
-            const response = await fetch('https://homy-6bvz.onrender.com/reviews', {
+            const response = await fetch('https://backend-phase5-project.onrender.com/reviews', {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {
@@ -55,7 +56,7 @@ function ReviewsForm() {
             // Handle error
             setLoading(false);
         } finally {
-            window.location.reload();
+            // window.location.reload();
         }
     };
 
@@ -89,7 +90,7 @@ function ReviewsForm() {
                             </option>
                             ))}
                         </Form.Select><br/>    
-                        <Form.Select name='username_id' value={usernameID} onChange={(e) => setUsernameID(e.target.value)} aria-label="Default select example">
+                        <Form.Select name='user_id' value={usernameID} onChange={(e) => setUsernameID(e.target.value)} aria-label="Default select example">
                         <option value="">Select your username</option>
                             {Array.isArray(users) && users.map((user) => (
                             <option key={user.id} value={user.id}>

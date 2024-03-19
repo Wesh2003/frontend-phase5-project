@@ -9,7 +9,7 @@ function ReviewTable() {
     useEffect(()=>{
         async function fetchReviewData(){
             try{
-                await fetch('https://homy-6bvz.onrender.com/reviews')
+                await fetch('https://backend-phase5-project.onrender.com/reviews')
                 .then(response => response.json())
                 .then(data => {
                     console.log("Here is data table")
@@ -25,7 +25,7 @@ function ReviewTable() {
     // console.log(reviews)
 
     function handleDelete(id) {
-        fetch(`https://homy-6bvz.onrender.com/reviews/${id}`, {
+        fetch(`https://backend-phase5-project.onrender.com/reviews/${id}`, {
             method: "DELETE",
             }).then((r) => {
             if (r.ok) {
@@ -62,8 +62,8 @@ function ReviewTable() {
                         <td>{item.id}</td>
                         <td>{item.description}</td>
                         <td>{item.rating}</td>
-                        <td>{item.product.name}</td>
-                        <td>{item.user.username}</td>
+                        <td>{item.product && item.product.name}</td>
+                        <td>{item.user && item.user.name}</td>
                         <td><Button variant='danger' onClick={() => handleDelete(item.id)}>Delete</Button></td>
                         <td><Button variant='success'><Link to={`/reviews/${item.id}/edit`} className="link">Update Review</Link></Button></td> 
                         {/* Maybe we can update the review? */}

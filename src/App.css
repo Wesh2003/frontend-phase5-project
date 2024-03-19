@@ -67,7 +67,7 @@
   object-fit: cover;
 } */
 #image-div{
-  object-fit: cover;
+  object-fit:scale-down;
   background-color: #F7EEDD;
   margin-right: 0px;
 }

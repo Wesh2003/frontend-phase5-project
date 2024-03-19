@@ -10,7 +10,7 @@ function ProductsTable() {
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
 
     useEffect(() => {
-        fetch("https://backend-phase5-project-1sau.onrender.com/products")
+        fetch("https://backend-phase5-project.onrender.com/products")
             .then(response => response.json())
             .then((data) => setProducts(data));
     }, []);
@@ -38,7 +38,7 @@ function ProductsTable() {
             category:item.category,
         };
         try {
-            const response = fetch('https://homy-6bvz.onrender.com/shoppingcart', {
+            const response = fetch('https://backend-phase5-project.onrender.com/shoppingcart', {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {
@@ -57,7 +57,7 @@ function ProductsTable() {
         }
 
     } function handleAddToWishlist(productId) {
-        fetch('https://backend-phase5-project-1sau.onrender.com/wishlists/add', {
+        fetch('https://backend-phase5-project.onrender.com/wishlists/add', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
