@@ -65,7 +65,7 @@ function ReviewTable() {
                         <td>{item.product && item.product.name}</td>
                         <td>{item.user && item.user.name}</td>
                         <td><Button variant='danger' onClick={() => handleDelete(item.id)}>Delete</Button></td>
-                        <td><Button variant='success'><Link to={`/reviews/${item.id}/edit`} className="link">Update Review</Link></Button></td> 
+                        {/* <td><Button variant='success'><Link to={`/reviews/${item.id}/edit`} className="link">Update Review</Link></Button></td>  */}
                         {/* Maybe we can update the review? */}
                     </tr>
                     ))}
