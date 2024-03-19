@@ -22,7 +22,7 @@ function SignUp() {
 
       // Send signup request to backend
 
-      const response = await fetch('https://backend-phase5-project-1sau.onrender.com/register', {
+      const response = await fetch('https://backend-phase5-project.onrender.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ function SignUp() {
       console.log(response);
       if (response.ok) {
         // Redirect to products page upon successful signup
-        window.location.replace('/login'); 
+        window.location.replace('/'); 
       } else {
         // Handle signup error
         console.error('Signup failed');

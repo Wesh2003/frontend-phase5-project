@@ -4,7 +4,7 @@ function WishlistPage() {
   const [wishlistItems, setWishlistItems] = useState([]);
 
   useEffect(() => {
-    fetch('https://backend-phase5-project-1sau.onrender.com/wishlists', {
+    fetch('https://backend-phase5-project.onrender.com/wishlists', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
