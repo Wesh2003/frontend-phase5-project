@@ -47,14 +47,15 @@ function ProductsTable() {
                 }
             });
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Could not add to cart');
             }
-            window.prompt('not pushed')
+            
         } catch (error) {
             // Handle error
-            window.prompt('not pushed')
+            // window.prompt('not pushed')
+            console.error('Error:', error);
         } finally {
-            window.location.reload();
+            // window.location.reload();
         }
 
     } function handleAddToWishlist(productId) {

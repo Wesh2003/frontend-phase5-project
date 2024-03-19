@@ -56,7 +56,7 @@ function ReviewsForm() {
             // Handle error
             setLoading(false);
         } finally {
-            // window.location.reload();
+            window.location.reload();
         }
     };
 
