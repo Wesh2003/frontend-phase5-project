@@ -1,24 +1,42 @@
-import React, { useEffect, useState } from 'react';
-// import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
-function UserProfile({ userId }) {
-  const [user, setUser] = useState(null);
-
-  const fetchUserData = async (userId) => {
-    try {
-      const response = await fetch(`https://backend-phase5-project-1sau.onrender.com/users/${userId}`);
-      const userData = await response.json();
-      setUser(userData);
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-    }
-  };
+const UserTable = () => {
+  const [userData, setUserData] = useState(null);
+  const [searchUsername, setSearchUsername] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    if (userId) {
-      fetchUserData(userId);
+    const fetchUserData = async () => {
+      setLoading(true);
+      setError('');
+
+      try {
+        const response = await fetch(`https://backend-phase5-project.onrender.com/${searchUsername}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        console.error('Error fetching user data:', error.message);
+        setError('Failed to fetch user data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (searchUsername.trim() !== '') {
+      fetchUserData();
     }
-  }, [userId]);
+  }, [searchUsername]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    // Trigger fetchUserData when the search button is clicked
+    setUserData(null); // Clear previous user data
+    setSearchUsername(e.target.elements.username.value.trim());
+  };
 
   return (
     <div>

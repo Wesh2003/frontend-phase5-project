@@ -114,7 +114,7 @@ function ProductsTable() {
                                         <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p>
                                         <p className="card-text"><strong>Category:</strong> {item.category}</p>
                                         <div className="d-flex justify-content-between align-items-center">
-                                            <button className="btn btn-primary mr-2" onClick={() => handleAddToCart(item)}>Add To Cart</button>
+                                            <button className="btn btn-primary mr-2" onClick={() => handleAddToCart()}>Add To Cart</button>
                                             <button className="btn btn-secondary mr-2" onClick={() => handleAddToWishlist(item._id)}>Add To Wishlist</button>
                                             <button className="btn btn-info"><Link to={`/reviews`} className="link" id = 'reviewbutton'>Review</Link></button>
                                         </div>

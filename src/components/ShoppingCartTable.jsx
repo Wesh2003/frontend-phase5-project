@@ -15,7 +15,7 @@ function ShoppingCart() {
   }, []);
 
   const handleDeleteItem = (id) => {
-    fetch(`/shoppingcart/${id}`, {
+    fetch(`https://backend-phase5-project.onrender.com/shoppingcart/${id}`, {
       method: 'DELETE'
     })
     .then(response => {
@@ -29,29 +29,29 @@ function ShoppingCart() {
       console.error('Error deleting item from shopping cart:', error);
     });
   };
-  // const handleAddToCart = (item) => {
-  //   fetch('/add-to-cart', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(item),
-  //   })
-  //   .then(response => {
-  //     if (response.ok) {
-  //       // Assuming the response contains the updated cart items
-  //       return response.json();
-  //     } else {
-  //       console.error('Failed to add item to cart');
-  //     }
-  //   })
-  //   .then(data => {
-  //     setCartItems(data); // Update the UI with the updated cart items
-  //   })
-  //   .catch(error => {
-  //     console.error('Error adding item to cart:', error);
-  //   });
-  // };
+  const handleAddToCart = (item) => {
+    fetch('shoppingcart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(item),
+    })
+    .then(response => {
+      if (response.ok) {
+        // Assuming the response contains the updated cart items
+        return response.json();
+      } else {
+        console.error('Failed to add item to cart');
+      }
+    })
+    .then(data => {
+      setCartItems(data); // Update the UI with the updated cart items
+    })
+    .catch(error => {
+      console.error('Error adding item to cart:', error);
+    });
+  };
 
   return (
     <div>
