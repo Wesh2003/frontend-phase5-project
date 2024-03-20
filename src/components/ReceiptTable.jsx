@@ -7,7 +7,7 @@ function ReceiptTable({ orderDetails}) {
   useEffect(()=>{
       async function fetchReceiptData(){
           try{
-              await fetch('https://backend-phase5-project.onrender.com/receipt/last')
+              await fetch('https://backend-phase5-project.onrender.com/receipt')
               .then(response => response.json())
               .then(data => {
                   console.log("Here is data table")
@@ -64,6 +64,7 @@ function ReceiptTable({ orderDetails}) {
                         <tr key={item.id}>
                         <td>{item.id}</td>
                         <td>{item.delivery_address}</td>
+                        <td>{item.city}</td>
                         <td>{item.created_at}</td>
                         <td>{item.user && item.user.name}</td>
                         <td>{item.user && item.user.email}</td>

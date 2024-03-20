@@ -78,7 +78,7 @@ function CheckoutForm() {
                             </option>
                             ))}
                         </Form.Select><br/>   
-                        <Form.Select name='user_id' value={usernameID} onChange={(e) => setUsernameID(e.target.value)} aria-label="Default select example">
+                        <Form.Select name='user_id' aria-label="Default select example">
                         <option value="">Select your phone number</option>
                             {Array.isArray(users) && users.map((user) => (
                             <option key={user.id} value={user.id}>
@@ -86,7 +86,7 @@ function CheckoutForm() {
                             </option>
                             ))}
                         </Form.Select><br/>   
-                        <Form.Select name='user_id' value={usernameID} onChange={(e) => setUsernameID(e.target.value)} aria-label="Default select example">
+                        <Form.Select name='user_id' aria-label="Default select example">
                         <option value="">Select your email</option>
                             {Array.isArray(users) && users.map((user) => (
                               <option key={user.id} value={user.id}>
