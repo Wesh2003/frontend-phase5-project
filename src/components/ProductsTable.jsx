@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ProductsTable({userId}) {
     const [products, setProducts] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState
+    const [selectedCategory, setSelectedCategory] = useState()
     useEffect(() => {
         fetch("https://backend-phase5-project.onrender.com/products")
             .then(response => response.json())
