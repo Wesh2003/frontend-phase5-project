@@ -1,22 +1,15 @@
-
+// MainPage.jsx
+import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import ProductsTable from "../components/ProductsTable";
+import ProductsTable from '../components/ProductsTable';
 
-function MainPage({isAuthenticated}) {
-  // State to track authentication status
- 
-
-  
-
+function MainPage({ isAuthenticated }) {
   return (
     <div className='mainpage'>
-      <NavBar 
-        isAuthenticated={isAuthenticated} // Pass the authentication state here
-       // Pass the handleLogout function
-      />
-      <ProductsTable/>
-      <Footer/>
+      <NavBar isAuthenticated={isAuthenticated} />
+      <ProductsTable />
+      <Footer />
     </div>
   );
 }

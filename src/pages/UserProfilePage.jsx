@@ -7,14 +7,14 @@
 
 import React from 'react';
 import NavBar from '../components/NavBar';
-import UserTable from  '../components/UserTable';
+import UserProfile from  '../components/UserTable';
 
 
 function UserProfilePage() {
   return (
     <div>
         <NavBar/>
-        <UserTable/>
+        <UserProfile />
     </div>
   )
 }

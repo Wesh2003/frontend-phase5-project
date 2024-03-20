@@ -1,8 +1,8 @@
+// NavBar.jsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser as faRegularUser, faUserCircle as faSolidUser } from '@fortawesome/free-regular-svg-icons';
-
 
 function NavBar({ isAuthenticated }) {
   return (
@@ -19,11 +19,15 @@ function NavBar({ isAuthenticated }) {
       <NavLink to="/customercare" className='navbarss'>
         <h4>Customer care</h4>
       </NavLink>
-      <NavLink to="/users" className='navbarss'>
-        <h4>User Profile</h4>
-      </NavLink>
-      <FontAwesomeIcon icon={isAuthenticated ? faSolidUser : faRegularUser} />
-      
+      {isAuthenticated ? (
+        <NavLink to="/userprofile">
+          <FontAwesomeIcon icon={faSolidUser} />
+        </NavLink>
+      ) : (
+        <NavLink to="/login">
+          <FontAwesomeIcon icon={faRegularUser} />
+        </NavLink>
+      )}
     </div>
   );
 }
