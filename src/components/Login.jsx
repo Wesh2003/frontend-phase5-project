@@ -9,7 +9,7 @@ function Login({ setIsAuthenticated, setUserId }) {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('https://backend-phase5-project-1sau.onrender.com/users', {
+      const response = await fetch('https://backend-phase5-project.onrender.com/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

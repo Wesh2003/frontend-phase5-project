@@ -10,7 +10,7 @@ function ProductsTable() {
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
 
     useEffect(() => {
-        fetch("https://backend-phase5-project-1sau.onrender.com/products")
+        fetch("https://backend-phase5-project.onrender.com/products")
             .then(response => response.json())
             .then((data) => setProducts(data));
     }, []);
@@ -39,7 +39,7 @@ function ProductsTable() {
             category:item.category,
         };
         try {
-            const response = fetch('https://homy-6bvz.onrender.com/shoppingcart', {
+            const response = fetch('https://backend-phase5-project.onrender.com/shoppingcart', {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {
@@ -47,18 +47,19 @@ function ProductsTable() {
                 }
             });
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Could not add to cart');
             }
-            window.prompt('not pushed')
+            
         } catch (error) {
             // Handle error
-            window.prompt('not pushed')
+            // window.prompt('not pushed')
+            console.error('Error:', error);
         } finally {
-            window.location.reload();
+            // window.location.reload();
         }
 
     } function handleAddToWishlist(productId) {
-        fetch('https://backend-phase5-project-1sau.onrender.com/wishlists/add', {
+        fetch('https://backend-phase5-project.onrender.com/wishlists/add', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
