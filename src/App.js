@@ -40,14 +40,14 @@ function App() {
       <Router>
           <Switch>
             <Route exact path ='/'><MainPage isAuthenticated={isAuthenticated}/></Route>
-            <Route exact path='/products'><ProductsTable/></Route>
+            <Route exact path='/products'><ProductsTable userId={userId}/></Route>
             <Route exact path='/login'><LoginPage handleLogin={handleLogin} setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated}  setUserId={setUserId}/></Route>
             <Route exact path="/register" ><SignUpPage/></Route>
             <Route exact path="/reviews" ><ReviewsPage/></Route>
             <Route exact path='/shoppingcart'><ShoppingCartPage/></Route>
             {/* <Route exact path="/shoppingcart/:id"><ShoppingCartTable/></Route> */}
             <Route exact path="/userprofile">{isAuthenticated ? <UserProfilePage userId={userId}/> : <Redirect to='/login' />}</Route>
-            <Route exact path="/wishlists"><WishlistPage/></Route>
+            <Route exact path="/wishlists"><WishlistPage isAuthenticated ={isAuthenticated } userId ={userId }/></Route>
             {/* <Route exact path="/reviews/:id/edit"><ReviewEditForm/></Route> */}
             {/* <Route exact path="/recommendations" ><Recommendation_Page/></Route> */}
             <Route exact path="/checkout" ><CheckoutInfoPage/></Route>
