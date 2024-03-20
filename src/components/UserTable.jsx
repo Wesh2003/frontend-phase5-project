@@ -6,7 +6,9 @@ function UserProfile({ userId }) {
 
   const fetchUserData = async (userId) => {
     try {
+      const userId = 1 ;
       const response = await fetch(`https://backend-phase5-project-1sau.onrender.com/users/${userId}`);
+      console.log(response)
       const userData = await response.json();
       setUser(userData);
     } catch (error) {

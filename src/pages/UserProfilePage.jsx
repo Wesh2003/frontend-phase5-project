@@ -10,11 +10,11 @@ import NavBar from '../components/NavBar';
 import UserProfile from  '../components/UserTable';
 
 
-function UserProfilePage() {
+function UserProfilePage({userId}) {
   return (
     <div>
         <NavBar/>
-        <UserProfile />
+        <UserProfile userId={userId}/>
     </div>
   )
 }
