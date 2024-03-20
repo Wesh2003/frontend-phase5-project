@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+
+
+
 function CheckoutForm({ onSubmit }) {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -25,31 +28,31 @@ function CheckoutForm({ onSubmit }) {
 
   };
   
-  const handleAddToReceipt = () => {
-    fetch('/add-to-receipt', {  // Change the endpoint to /add-to-receipt
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-    .then(response => {
-      if (response.ok) {
-        // Assuming the response contains the updated receipt items
-        return response.json();
-      } else {
-        console.error('Failed to add item to receipt');
-      }
-    })
-    .then(data => {
-      // Update the UI with the updated receipt items
-      // This could involve rendering the receipt table with the new data
-    // newreceiptTable(data);
-    })
-    .catch(error => {
-      console.error('Error adding item to receipt:', error);
-    });
-  };
+  // const handleAddToReceipt = () => {
+  //   fetch('/add-to-receipt', {  // Change the endpoint to /add-to-receipt
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(formData),
+  //   })
+  //   .then(response => {
+  //     if (response.ok) {
+  //       // Assuming the response contains the updated receipt items
+  //       return response.json();
+  //     } else {
+  //       console.error('Failed to add item to receipt');
+  //     }
+  //   })
+  //   .then(data => {
+  //     // Update the UI with the updated receipt items
+  //     // This could involve rendering the receipt table with the new data
+  //   // newreceiptTable(data);
+  //   })
+  //   .catch(error => {
+  //     console.error('Error adding item to receipt:', error);
+  //   });
+  // };
   
   return (
     <form onSubmit={handleSubmit}>
