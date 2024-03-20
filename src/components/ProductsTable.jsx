@@ -5,10 +5,9 @@ import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import AddToWishlist from './AddToWishlist';
 
-function ProductsTable() {
+function ProductsTable({userId}) {
     const [products, setProducts] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState('All Categories');
-
+    const [selectedCategory, setSelectedCategory] = useState
     useEffect(() => {
         fetch("https://backend-phase5-project.onrender.com/products")
             .then(response => response.json())
@@ -58,30 +57,39 @@ function ProductsTable() {
             // window.location.reload();
         }
 
-    } function handleAddToWishlist(productId) {
+    } 
+    function handleAddToWishlist(productId) {
+    
+        if (!userId) {
+            alert('Please log in to add items to your wishlist.');
+
+            return;
+        }
+
+        
         fetch('https://backend-phase5-project.onrender.com/wishlists/add', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
             },
-          body: JSON.stringify({ product_id: productId }),
+            body: JSON.stringify({ user_id: userId, product_id: productId }),
         })
         .then(response => {
-          if (!response.ok) {
-            throw new Error('Could not add to wishlist');
-          }
-          return response.json();
+            if (!response.ok) {
+                throw new Error('Could not add to wishlist');
+            }
+            return response.json();
         })
         .then(data => {
-          alert(data.message);
-          
+            alert(data.message); 
         })
         .catch(error => {
-          console.error('Error:', error);
+            console.error('Error:', error);
+        
+            alert('An error occurred while adding to wishlist. Please try again later.');
         });
-      }
-   
-
+    }
+    
 
     return (
         <div className="container">

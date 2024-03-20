@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from 'react';
-
-function WishlistPage() {
+function WishlistPage({ isAuthenticated, userId }) {
   const [wishlistItems, setWishlistItems] = useState([]);
 
   useEffect(() => {
-    fetch('https://backend-phase5-project.onrender.com/wishlists', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then(response => response.json())
-    .then(data => {
-      setWishlistItems(data.wishlist);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  }, []);
+    if (!isAuthenticated || !userId) return;
+
+    fetch(`https://backend-phase5-project.onrender.com/wishlists/${userId}`)
+      .then(response => response.json())
+      .then(data => {
+        setWishlistItems(data.wishlist);
+      })
+  }, [isAuthenticated, userId]); 
+
 
   return (
     <div className="container">
