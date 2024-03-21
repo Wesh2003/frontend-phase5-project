@@ -19,10 +19,19 @@ function Login({ setIsAuthenticated, setUserId }) {
       const data = await response.json();
 
       if (response.ok) {
-        const { userId } = data; // Extract userId from response data
+        const { id ,  access_token  } = data; // Extract userId and accessToken from response data
         
+        // Store the access token in local storage
+        localStorage.setItem(' access_token ',  access_token );
+        
+        // Set isAuthenticated and userId in the parent component
         setIsAuthenticated(true);
-        setUserId(userId); 
+        setUserId(id); 
+        window.prompt("logged in")
+        console.log(access_token)
+        console.log(id)
+        
+        // Redirect to home page
         history.push('/');
       } else {
         window.alert(data.message || 'Login failed');

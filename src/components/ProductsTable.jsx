@@ -3,9 +3,10 @@ import SearchBar from './SearchBar';
 import CategoryFilter from './CategoryFilter';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import userEvent from '@testing-library/user-event';
 // import AddToWishlist from './AddToWishlist';
 
-function ProductsTable() {
+function ProductsTable({userId}) {
     const [products, setProducts] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
 
@@ -31,6 +32,8 @@ function ProductsTable() {
 
     function handleAddToCart(item){
         const formData = {
+            product_id : item.id,
+            user_id : userId,
             name: item.name,
             description: item.description,
             price: item.price,
@@ -46,6 +49,7 @@ function ProductsTable() {
                     'Content-Type': 'application/json'
                 }
             });
+            console.log(response)
             if (!response.ok) {
                 throw new Error('Could not add to cart');
             }
