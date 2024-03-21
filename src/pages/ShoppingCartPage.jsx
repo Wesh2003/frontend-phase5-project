@@ -11,11 +11,11 @@ import Footer from '../components/Footer';
 import ShoppingCartTable from  '../components/ShoppingCartTable';
 
 
-function ShoppingCartPage() {
+function ShoppingCartPage({userId}) {
   return (
     <div>
         <NavBar/>
-        <ShoppingCartTable/>
+        <ShoppingCartTable  userId={userId}/>
         <Footer/>
     </div>
   )

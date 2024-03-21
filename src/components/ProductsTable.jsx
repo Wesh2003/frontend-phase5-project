@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ProductsTable({userId ,isAuthenticated} ) {
     const [products, setProducts] = useState([]);
+    console.log(userId)
 
     const [selectedCategory, setSelectedCategory] = useState('All Categories')
     useEffect(() => {
@@ -30,37 +31,37 @@ function ProductsTable({userId ,isAuthenticated} ) {
     const categories = ['All Categories', ...new Set(products.map(item => item.category))];
 
     function handleAddToCart(item){
-        const formData = {
-            name: item.name,
-            description: item.description,
-            price: item.price,
-            image: item.image_url,
-            quantity:item.quantity,
-            category:item.category,
-        };
-        try {
-            const response = fetch('https://backend-phase5-project.onrender.com/shoppingcart', {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            if (!response.ok) {
-                throw new Error('Could not add to cart');
-            }
-            
-        } catch (error) {
-            // Handle error
-            // window.prompt('not pushed')
-            console.error('Error:', error);
-        } finally {
-            // window.location.reload();
+        if (!userId) {
+            alert('Please log in to add items to your wishlist.');
+
+            return;
         }
 
+        
+        fetch('https://backend-phase5-project.onrender.com/shoppingcart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_id: userId, product_id: item}),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Could not add to wishlist');
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert(data.message); 
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        
+            alert('An error occurred while adding to wishlist. Please try again later.');
+        });
     } 
     function handleAddToWishlist(productId) {
-    
+        
         if (!userId) {
             alert('Please log in to add items to your wishlist.');
 
