@@ -1,27 +1,36 @@
 import React, { useState, useEffect } from 'react';
-function WishlistPage({ isAuthenticated, userId }) {
-  const [wishlistItems, setWishlistItems] = useState([]);
 
-  useEffect(() => {
-    if (!isAuthenticated || !userId) return;
+function WishlistPage({ userId }) {
+    const [wishlistItems, setWishlistItems] = useState([]);
+    console.log(userId);
 
-    fetch(`https://backend-phase5-project.onrender.com/wishlists/${userId}`)
-      .then(response => response.json())
-      .then(data => {
-        setWishlistItems(data.wishlist);
-      })
-  }, [isAuthenticated, userId]); 
+    useEffect(() => {
+        if (userId) {
+            fetch(`https://backend-phase5-project.onrender.com/wishlists/${userId}`)
+                .then(response => response.json())
+                .then(data => {
+                    setWishlistItems(data.wishlist);
+                })
+                .catch(error => {
+                    console.error('Error fetching wishlist:', error);
+                });
+        }
+    }, [userId]);
+    
+    // if (!userId) {
+    //     return <p>Please log in to view your wishlist.</p>;
+    // }
 
 
-  return (
-    <div className="container">
-      <h2>My Wishlist</h2>
-      <div className="row">
+    return (
+        <div className="container">
+            <h2>My Wishlist</h2>
+            <div className="row">
                 {wishlistItems.map((item) => (
-                    <div className="col-lg-6 col-md-6 col-sm-12 mb-4" key={item._id} id = 'entire-card'>
+                    <div className="col-lg-6 col-md-6 col-sm-12 mb-4" key={item._id} id='entire-card'>
                         <div className="card">
                             <div className="row no-gutters">
-                                <div className="col-md-4" id= 'image-div'>
+                                <div className="col-md-4" id='image-div'>
                                     <img
                                         src={item.image}
                                         alt="Product"
@@ -46,9 +55,8 @@ function WishlistPage({ isAuthenticated, userId }) {
                     </div>
                 ))}
             </div>
-
-    </div>
-  );
+        </div>
+    );
 }
 
 export default WishlistPage;
