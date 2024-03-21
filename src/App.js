@@ -15,6 +15,7 @@ import CustomerCarePage from './pages/CustomerCarePage';
 import WishlistPage from  './pages/WishlistPage';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import HelpPage from './pages/HelpPage';
+import EntryPage from './pages/EntryPage';
 // import WishlistTable from './components/WishlistTable';
 
 function App() {
@@ -27,8 +28,11 @@ function App() {
       
       <Router>
         <Switch>
+
           <Route exact path='/'><MainPage isAuthenticated={isAuthenticated} userId={userId} /></Route>
           {/* <Route exact path='/products'>{<MainPage userId={userId}/>}</Route> */}
+        <Route exact path='/'><EntryPage/></Route>
+         
           <Route exact path='/login'><LoginPage setIsAuthenticated={setIsAuthenticated} setUserId={setUserId} /></Route>
           <Route exact path="/register" ><SignUpPage /></Route>
           <Route exact path="/reviews" ><ReviewsPage /></Route>
