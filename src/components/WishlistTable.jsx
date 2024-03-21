@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-function WishlistPage({ userId }) {
+function WishlistTable({ userId }) {
     const [wishlistItems, setWishlistItems] = useState([]);
     const history = useHistory()
     console.log(userId);
@@ -66,4 +66,4 @@ function WishlistPage({ userId }) {
     );
 }
 
-export default WishlistPage;
+export default WishlistTable;
