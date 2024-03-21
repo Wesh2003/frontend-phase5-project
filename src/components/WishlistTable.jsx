@@ -1,33 +1,43 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-function WishlistPage() {
-  const [wishlistItems, setWishlistItems] = useState([]);
+function WishlistPage({ userId }) {
+    const [wishlistItems, setWishlistItems] = useState([]);
+    const history = useHistory()
+    console.log(userId);
 
-  useEffect(() => {
-    fetch('https://backend-phase5-project.onrender.com/wishlists', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then(response => response.json())
-    .then(data => {
-      setWishlistItems(data.wishlist);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  }, []);
+    useEffect(() => {
+        console.log(userId);
+        if (userId) {
+            fetch(`https://backend-phase5-project.onrender.com/wishlists/${userId}`)
+                .then(response => response.json())
+                .then(data => {
+                    setWishlistItems(data.wishlist);
+                })
+                .catch(error => {
+                    console.error('Error fetching wishlist:', error);
+                });
+        }
+    }, [userId]);
+    
+    function  handleLog(){
+        history.push( "/login" )
+    }
+    
+    if (!userId) {
+        return <button onClick={handleLog} className="btn btn-secondary mr-2">login first</button>;
+    }
 
-  return (
-    <div className="container">
-      <h2>My Wishlist</h2>
-      <div className="row">
+
+    return (
+        <div className="container">
+            <h2>My Wishlist</h2>
+            <div className="row">
                 {wishlistItems.map((item) => (
-                    <div className="col-lg-6 col-md-6 col-sm-12 mb-4" key={item._id} id = 'entire-card'>
+                    <div className="col-lg-6 col-md-6 col-sm-12 mb-4" key={item._id} id='entire-card'>
                         <div className="card">
                             <div className="row no-gutters">
-                                <div className="col-md-4" id= 'image-div'>
+                                <div className="col-md-4" id='image-div'>
                                     <img
                                         src={item.image}
                                         alt="Product"
@@ -52,9 +62,8 @@ function WishlistPage() {
                     </div>
                 ))}
             </div>
-
-    </div>
-  );
+        </div>
+    );
 }
 
 export default WishlistPage;
