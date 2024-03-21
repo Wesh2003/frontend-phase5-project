@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import AddToWishlist from './AddToWishlist';
 
-function ProductsTable({userId}) {
+function ProductsTable({userId ,isAuthenticated} ) {
     const [products, setProducts] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState
+    const [selectedCategory, setSelectedCategory] = useState('All Categories')
     useEffect(() => {
         fetch("https://backend-phase5-project.onrender.com/products")
             .then(response => response.json())
