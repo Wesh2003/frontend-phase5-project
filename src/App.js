@@ -20,8 +20,8 @@ import HelpPage from './pages/HelpPage';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState(null);
-
   console.log(userId)
+
   return (
     <div>
       <Router>
