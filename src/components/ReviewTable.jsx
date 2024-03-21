@@ -63,7 +63,7 @@ function ReviewTable() {
                         <td>{item.rating}</td>
                         <td>{item.created_at}</td>
                         <td>{item.product && item.product.name}</td>
-                        <td>{item.user && item.user.name}</td>
+                        <td>{item.username}</td>
                         <td><Button variant='danger' onClick={() => handleDelete(item.id)}>Delete</Button></td>
                         {/* <td><Button variant='success'><Link to={`/reviews/${item.id}/edit`} className="link">Update Review</Link></Button></td>  */}
                         {/* Maybe we can update the review? */}
