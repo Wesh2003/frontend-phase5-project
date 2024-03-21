@@ -7,7 +7,7 @@ import { faUser as faRegularUser, faUserCircle as faSolidUser } from '@fortaweso
 function NavBar({ isAuthenticated }) {
   return (
     <div className='navbar'>
-      <NavLink to="/" className='navbarss'>
+      <NavLink to="/home" className='navbarss'>
         <h4>Home</h4>
       </NavLink>
       <NavLink to="/shoppingcart" className='navbarss'>
@@ -21,11 +21,11 @@ function NavBar({ isAuthenticated }) {
       </NavLink>
       {isAuthenticated ? (
         <NavLink to="/userprofile">
-          <FontAwesomeIcon icon={faSolidUser} />
+          <FontAwesomeIcon className='user-icon' icon={faSolidUser} />
         </NavLink>
       ) : (
         <NavLink to="/login">
-          <FontAwesomeIcon icon={faRegularUser} />
+          <FontAwesomeIcon className='user-icon' icon={faRegularUser} />
         </NavLink>
       )}
     </div>

@@ -45,26 +45,34 @@ function SignUp() {
   // this is a comment
 
   return (
-    <div>
-      <h2>Sign Up</h2>
+    <div className='signup-form'>
+      <h2 className='sign-heading'>Sign Up</h2>
+      <br></br>
+      <br></br>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" value={formData.name} onChange={handleChange} required />
+        <div >
+          <label className='signup-labels' htmlFor="username">Username:</label>
+          <input className='signup-inputs' type="text" id="username" name="username" value={formData.name} onChange={handleChange} required />
         </div>
+        <br></br>
         <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+          <label className='signup-labels' htmlFor="email">Email:</label>
+          <input className='signup-inputs' type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
         </div>
+        <br></br>
         <div>
-          <label htmlFor="phone">Phone:</label>
-          <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required />
+          <label className='signup-labels' htmlFor="phone">Phone:</label>
+          <input className='signup-inputs' type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required />
         </div>
+        <br></br>
         <div>
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
+          <label className='signup-labels' htmlFor="password">Password:</label>
+          <input className='signup-inputs' type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
         </div>
-        <button type="submit">Sign Up</button>
+        <br></br>
+        <br></br>
+        <br></br>
+        <button className = 'sign-button' type="submit">Sign Up</button>
       </form>
     </div>
   );
