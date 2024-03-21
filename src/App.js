@@ -11,9 +11,9 @@ import ReviewsPage from './pages/ReviewsPage';
 import MainPage from './pages/MainPage';
 import ShoppingCartPage from './pages/ShoppingCartPage';
 import UserProfilePage from './pages/UserProfilePage';
-import WishlistPage from './pages/WishlistPage';
 import DeliveryStatusPage from './pages/DeliveryStatusPage';
 import CustomerCarePage from './pages/CustomerCarePage';
+import WishlistPage from  './pages/WishlistPage';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import HelpPage from './pages/HelpPage';
 import CheckoutInfoPage from './pages/CheckoutInfoPage';
@@ -25,6 +25,7 @@ function App() {
 
   return (
     <div>
+      
       <Router>
         <Switch>
           <Route exact path='/'><MainPage isAuthenticated={isAuthenticated} /></Route>
@@ -42,6 +43,7 @@ function App() {
           <Route exact path="/help"><HelpPage /></Route>
           <SignUp />
           <UserProfile userId={userId} />
+          {/* <WishlistTable userId={userId} /> */}
           <Footer />
         </Switch>
       </Router>
