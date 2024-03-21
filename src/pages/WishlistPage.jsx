@@ -11,11 +11,11 @@ import Footer from '../components/Footer';
 import WishlistTable from  '../components/WishlistTable';
 
 
-function WishlistPage() {
+function WishlistPage({userId,  isAuthenticated}) {
   return (
     <div>
         <NavBar/>
-        <WishlistTable/>
+        <WishlistTable userId={userId} isAuthenticated={isAuthenticated}/>
         <Footer/>
     </div>
   )

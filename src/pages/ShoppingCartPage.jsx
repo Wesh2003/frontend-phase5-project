@@ -11,11 +11,11 @@ import Footer from '../components/Footer';
 import ShoppingCartTable from  '../components/ShoppingCartTable';
 
 
-function ShoppingCartPage() {
+function ShoppingCartPage({isAuthenticated}) {
   return (
     <div>
         <NavBar/>
-        <ShoppingCartTable/>
+        <ShoppingCartTable isAuthenticated={isAuthenticated}/>
         <Footer/>
     </div>
   )

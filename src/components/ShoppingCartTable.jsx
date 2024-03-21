@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function ShoppingCart() {
+function ShoppingCart({isAuthenticated}) {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
@@ -8,6 +8,7 @@ function ShoppingCart() {
       .then(response => response.json())
       .then(data => {
         setCartItems(data);
+        isAuthenticated = true;
       })
       .catch(error => {
         console.error('Error fetching shopping cart items:', error);

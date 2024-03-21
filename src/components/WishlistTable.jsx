@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-function WishlistPage({ userId }) {
+function WishlistTable({ userId, isAuthenticated }) {
     const [wishlistItems, setWishlistItems] = useState([]);
     const history = useHistory()
     console.log(userId);
@@ -13,6 +13,7 @@ function WishlistPage({ userId }) {
                 .then(response => response.json())
                 .then(data => {
                     setWishlistItems(data.wishlist);
+                    isAuthenticated = true;
                 })
                 .catch(error => {
                     console.error('Error fetching wishlist:', error);
@@ -66,4 +67,4 @@ function WishlistPage({ userId }) {
     );
 }
 
-export default WishlistPage;
+export default WishlistTable;
