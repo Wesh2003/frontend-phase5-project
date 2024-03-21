@@ -29,7 +29,7 @@ function App() {
       <Router>
         <Switch>
 
-          <Route exact path='/'><MainPage isAuthenticated={isAuthenticated} userId={userId} /></Route>
+          <Route exact path='/home'><MainPage isAuthenticated={isAuthenticated} userId={userId} /></Route>
           {/* <Route exact path='/products'>{<MainPage userId={userId}/>}</Route> */}
         <Route exact path='/'><EntryPage/></Route>
          
