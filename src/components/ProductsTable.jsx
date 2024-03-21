@@ -62,14 +62,13 @@ function ProductsTable({userId ,isAuthenticated} ) {
     } 
     function handleAddToWishlist(productId) {
         
+    
         if (!userId) {
             alert('Please log in to add items to your wishlist.');
-
             return;
         }
-
-        
-        fetch('https://backend-phase5-project.onrender.com/wishlists/add', {
+    
+        fetch('http://0.0.0.0:5009/wishlists/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,14 +83,10 @@ function ProductsTable({userId ,isAuthenticated} ) {
         })
         .then(data => {
             alert(data.message); 
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        
-            alert('An error occurred while adding to wishlist. Please try again later.');
         });
     }
     
+     
 
     return (
         <div className="container">
@@ -113,7 +108,7 @@ function ProductsTable({userId ,isAuthenticated} ) {
                                         alt="Product"
                                         className="card-img"
                                         style={{ objectFit: 'auto' }}
-                                    />
+                                    />y
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
@@ -125,7 +120,8 @@ function ProductsTable({userId ,isAuthenticated} ) {
                                         <p className="card-text"><strong>Category:</strong> {item.category}</p>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <button className="btn btn-primary mr-2" onClick={() => handleAddToCart(item)}>Add To Cart</button>
-                                            <button className="btn btn-secondary mr-2" onClick={() => handleAddToWishlist(item._id)}>Add To Wishlist</button>
+                                            <button className="btn btn-secondary mr-2" onClick={() => handleAddToWishlist(item.id)}>Add To Wishlist</button>
+
                                             <button className="btn btn-info"><Link to={`/reviews`} className="link" id = 'reviewbutton'>Review</Link></button>
                                         </div>
                                     </div>

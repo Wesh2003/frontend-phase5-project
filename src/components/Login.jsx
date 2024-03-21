@@ -25,7 +25,7 @@ function Login({ setIsAuthenticated, setUserId }) {
         
         setIsAuthenticated(true);
         setUserId(id); 
-        history.push('/home');
+        history.push('/');
       } else {
         window.alert(data.message || 'Login failed');
       }
