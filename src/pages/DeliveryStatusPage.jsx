@@ -12,18 +12,6 @@ import ReceiptTable from '../components/ReceiptTable';
 
 
 function DeliveryStatusPage() {
-  useEffect(() => {
-    fetch('/receipt')
-      .then(response => response.json())
-      .then(data => {
-        setreceipt(data);
-      })
-      .catch(error => {
-        console.error('Error fetching receits:', error);
-      });
-  }, []);
-
-
   return (
     <div>
         <NavBar/>
@@ -33,5 +21,4 @@ function DeliveryStatusPage() {
   )
 }
 
-export default DeliveryStatusPage
-
+export default DeliveryStatusPage;

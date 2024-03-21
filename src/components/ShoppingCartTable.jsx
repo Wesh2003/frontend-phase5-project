@@ -29,7 +29,7 @@ function ShoppingCart() {
       console.error('Error deleting item from shopping cart:', error);
     });
   };
-  const handleAddToCart = (item) => {
+   const handleAddToCart = (item) => {
     fetch('shoppingcart', {
       method: 'POST',
       headers: {

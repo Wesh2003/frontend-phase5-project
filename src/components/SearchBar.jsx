@@ -41,7 +41,7 @@ function SearchBar({products}) {
                             {item.name}
                         </span> <br />
                         <img
-                            src={item.image}
+                            src={item.image_url}
                             alt="Product"
                             className="product-image"
                         />
@@ -50,6 +50,7 @@ function SearchBar({products}) {
                         <br />
                         <strong>Price:</strong> {item.price}
                         <br />
+                        
                         <strong>Quantity:</strong> {item.quantity}
                         <br />
                         <strong>Category:</strong>{item.category}

@@ -40,7 +40,7 @@ function App() {
       <Router>
           <Switch>
             <Route exact path ='/'><MainPage isAuthenticated={isAuthenticated}/></Route>
-            <Route exact path='/products'><ProductsTable/></Route>
+            <Route exact path='/products'><ProductsTable userId={userId} /></Route>
             <Route exact path='/login'><LoginPage handleLogin={handleLogin} setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated}  setUserId={setUserId}/></Route>
             <Route exact path="/register" ><SignUpPage/></Route>
             <Route exact path="/reviews" ><ReviewsPage/></Route>

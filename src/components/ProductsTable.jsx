@@ -29,57 +29,61 @@ function ProductsTable() {
 
     const categories = ['All Categories', ...new Set(products.map(item => item.category))];
 
-    function handleAddToCart(item){
+    const handleAddToCart = (item) => {
+        // const productId = item._id;
         const formData = {
             name: item.name,
             description: item.description,
             price: item.price,
             image: item.image_url,
-            quantity:item.quantity,
-            category:item.category,
+            quantity: item.quantity,
+            category: item.category,
         };
-        try {
-            const response = fetch('https://backend-phase5-project.onrender.com/shoppingcart', {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            if (!response.ok) {
-                throw new Error('Could not add to cart');
+    
+        fetch('https://backend-phase5-project.onrender.com/shoppingcart', {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json'
             }
-            
-        } catch (error) {
-            // Handle error
-            // window.prompt('not pushed')
-            console.error('Error:', error);
-        } finally {
-            // window.location.reload();
-        }
-
-    } function handleAddToWishlist(productId) {
-        fetch('https://backend-phase5-project.onrender.com/wishlists/add', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            },
-          body: JSON.stringify({ product_id: productId }),
         })
         .then(response => {
-          if (!response.ok) {
-            throw new Error('Could not add to wishlist');
-          }
-          return response.json();
-        })
-        .then(data => {
-          alert(data.message);
-          
+            if (!response.ok) {
+                 throw new Error('Failed to add item to cart: ' + response.statusText);
+            }
+            return response.json();
         })
         .catch(error => {
-          console.error('Error:', error);
+            console.log('Error adding item to cart:', error);
+        })
+        .then(data => {
+           console.log("item added to cart successfully:",data); // Update the UI with the updated cart items
+        })
+        
+    };
+    
+    // handleAddToWishlist function
+    const handleAddToWishlist = (productId) => {
+        fetch('https://backend-phase5-project.onrender.com/wishlists/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ product_id: productId }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Could not add to wishlist');
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error('Error adding item to wishlist:', error);
         });
-      }
+    };
    
 
 
@@ -114,7 +118,7 @@ function ProductsTable() {
                                         <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p>
                                         <p className="card-text"><strong>Category:</strong> {item.category}</p>
                                         <div className="d-flex justify-content-between align-items-center">
-                                            <button className="btn btn-primary mr-2" onClick={() => handleAddToCart()}>Add To Cart</button>
+                                            <button className="btn btn-primary mr-2" onClick={() => handleAddToCart(item)}>Add To Cart</button>
                                             <button className="btn btn-secondary mr-2" onClick={() => handleAddToWishlist(item._id)}>Add To Wishlist</button>
                                             <button className="btn btn-info"><Link to={`/reviews`} className="link" id = 'reviewbutton'>Review</Link></button>
                                         </div>
