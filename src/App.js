@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import CheckoutInfoPage from './pages/CheckoutInfoPage';
+
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
 import UserProfile from "./components/UserTable";

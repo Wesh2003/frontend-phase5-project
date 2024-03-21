@@ -3,11 +3,13 @@ import SearchBar from './SearchBar';
 import CategoryFilter from './CategoryFilter';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import userEvent from '@testing-library/user-event';
+
+
 // import AddToWishlist from './AddToWishlist';
 
 function ProductsTable({userId ,isAuthenticated} ) {
     const [products, setProducts] = useState([]);
+    
 
     const [selectedCategory, setSelectedCategory] = useState('All Categories')
     useEffect(() => {
@@ -30,39 +32,14 @@ function ProductsTable({userId ,isAuthenticated} ) {
 
     const categories = ['All Categories', ...new Set(products.map(item => item.category))];
 
-    function handleAddToCart(item){
-        const formData = {
-            product_id : item.id,
-            user_id : userId,
-            name: item.name,
-            description: item.description,
-            price: item.price,
-            image: item.image_url,
-            quantity:item.quantity,
-            category:item.category,
-        };
-        try {
-            const response = fetch('https://backend-phase5-project.onrender.com/shoppingcart', {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            console.log(response)
-            if (!response.ok) {
-                throw new Error('Could not add to cart');
-            }
-            
-        } catch (error) {
-            // Handle error
-            // window.prompt('not pushed')
-            console.error('Error:', error);
-        } finally {
-            // window.location.reload();
-        }
+    function handleAddToCart(productId) {
+        // Logic to handle adding the product to the cart
+        // This function will be called when the "Add To Cart" button is clicked
+         // Show the Cart component
+    }
 
-    } 
+    
+    
     function handleAddToWishlist(productId) {
     
         if (!userId) {
@@ -127,7 +104,7 @@ function ProductsTable({userId ,isAuthenticated} ) {
                                         <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p>
                                         <p className="card-text"><strong>Category:</strong> {item.category}</p>
                                         <div className="d-flex justify-content-between align-items-center">
-                                            <button className="btn btn-primary mr-2" onClick={() => handleAddToCart(item)}>Add To Cart</button>
+                                            <button className="btn btn-primary mr-2" onClick={handleAddToCart(item.id)}>Add To Cart</button>
                                             <button className="btn btn-secondary mr-2" onClick={() => handleAddToWishlist(item._id)}>Add To Wishlist</button>
                                             <button className="btn btn-info"><Link to={`/reviews`} className="link" id = 'reviewbutton'>Review</Link></button>
                                         </div>
