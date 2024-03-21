@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function WishlistPage({ userId }) {
     const [wishlistItems, setWishlistItems] = useState([]);
+    const history = useHistory()
     console.log(userId);
 
     useEffect(() => {
+        console.log(userId);
         if (userId) {
             fetch(`https://backend-phase5-project.onrender.com/wishlists/${userId}`)
                 .then(response => response.json())
@@ -17,9 +20,13 @@ function WishlistPage({ userId }) {
         }
     }, [userId]);
     
-    // if (!userId) {
-    //     return <p>Please log in to view your wishlist.</p>;
-    // }
+    function  handleLog(){
+        history.push( "/login" )
+    }
+    
+    if (!userId) {
+        return <button onClick={handleLog} className="btn btn-secondary mr-2">login first</button>;
+    }
 
 
     return (
