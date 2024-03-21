@@ -11,11 +11,11 @@ import Footer from '../components/Footer';
 import WishlistTable from  '../components/WishlistTable';
 
 
-function WishlistPage() {
+function WishlistPage({userId}) {
   return (
     <div>
         <NavBar/>
-        <WishlistTable/>
+        <WishlistTable userId ={userId}/>
         <Footer/>
     </div>
   )
