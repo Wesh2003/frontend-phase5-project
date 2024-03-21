@@ -39,7 +39,7 @@ function WishlistTable({ userId }) {
                             <div className="row no-gutters">
                                 <div className="col-md-4" id='image-div'>
                                     <img
-                                        src={item.image}
+                                        src={item.image_url}
                                         alt="Product"
                                         className="card-img"
                                         style={{ objectFit: 'contain' }}
