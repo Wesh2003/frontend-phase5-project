@@ -37,7 +37,7 @@ function ReviewsForm() {
             user_id: parseInt(usernameID),
             product_id: parseInt(productID),
             description,
-            rating,
+            rating: parseInt(rating),
         };
         console.log(formData)
         try {

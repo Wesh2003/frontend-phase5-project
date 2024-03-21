@@ -16,8 +16,9 @@ function ReviewTable() {
                     console.log(data)
                     setReviews(data)
                 })
-            }catch (error){
-                console.log('Error: ', error)
+            }
+            catch (error){
+                console.log('Error:', error);
             }
         }
         fetchReviewData()
@@ -51,9 +52,7 @@ function ReviewTable() {
                     <th>Created at:</th>
                     <th>Product Name</th>
                     <th>User name</th>
-                    <th></th>
                     <th>Delete</th>
-                    <th>Update</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,6 +61,7 @@ function ReviewTable() {
                         <td>{item.id}</td>
                         <td>{item.description}</td>
                         <td>{item.rating}</td>
+                        <td>{item.created_at}</td>
                         <td>{item.product && item.product.name}</td>
                         <td>{item.user && item.user.name}</td>
                         <td><Button variant='danger' onClick={() => handleDelete(item.id)}>Delete</Button></td>
