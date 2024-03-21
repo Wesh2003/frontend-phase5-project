@@ -1,72 +1,70 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-function ShoppingCart() {
+
+function ShoppingCart({userId}) {
   const [cartItems, setCartItems] = useState([]);
+//   const [wishlistItems, setWishlistItems] = useState([]);
+  const history = useHistory()
+  console.log(userId);
 
   useEffect(() => {
-    fetch('/shoppingcart')
-      .then(response => response.json())
-      .then(data => {
-        setCartItems(data);
-      })
-      .catch(error => {
-        console.error('Error fetching shopping cart items:', error);
-      });
-  }, []);
-
-  const handleDeleteItem = (id) => {
-    fetch(`/shoppingcart/${id}`, {
-      method: 'DELETE'
-    })
-    .then(response => {
-      if (response.ok) {
-        setCartItems(prevItems => prevItems.filter(item => item.id !== id));
-      } else {
-        console.error('Failed to delete item from shopping cart');
+      console.log(userId);
+      if (userId) {
+          fetch(`https://backend-phase5-project.onrender.com/wishlists/${userId}`)
+              .then(response => response.json())
+              .then(data => {
+                  setCartItems(data.wishlist);
+              })
+              .catch(error => {
+                  console.error('Error fetching wishlist:', error);
+              });
       }
-    })
-    .catch(error => {
-      console.error('Error deleting item from shopping cart:', error);
-    });
-  };
-  // const handleAddToCart = (item) => {
-  //   fetch('/add-to-cart', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(item),
-  //   })
-  //   .then(response => {
-  //     if (response.ok) {
-  //       // Assuming the response contains the updated cart items
-  //       return response.json();
-  //     } else {
-  //       console.error('Failed to add item to cart');
-  //     }
-  //   })
-  //   .then(data => {
-  //     setCartItems(data); // Update the UI with the updated cart items
-  //   })
-  //   .catch(error => {
-  //     console.error('Error adding item to cart:', error);
-  //   });
-  // };
+  }, [userId]);
+  
+  function  handleLog(){
+      history.push( "/login" )
+  }
+  
+  if (!userId) {
+      return <button onClick={handleLog} className="btn btn-secondary mr-2">login first</button>;
+  }
+
 
   return (
-    <div>
-      <h2>Shopping Cart</h2>
-      <ul>
-        {cartItems.map(item => (
-          <li key={item.id}>
-            <img src={item.image} alt={item.name} style={{ width: '100px', height: '100px' }} />
-            <p>Name: {item.name}</p>
-            <p>Price: ${item.price}</p>
-            <button onClick={() => handleDeleteItem(item.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <div className="container">
+          <h2>Shopping  Cart</h2>
+          <div className="row">
+              {cartItems.map((item) => (
+                  <div className="col-lg-6 col-md-6 col-sm-12 mb-4" key={item._id} id='entire-card'>
+                      <div className="card">
+                          <div className="row no-gutters">
+                              <div className="col-md-4" id='image-div'>
+                                  <img
+                                      src={item.image_url}
+                                      alt="Product"
+                                      className="card-img"
+                                      style={{ objectFit: 'contain' }}
+                                  />
+                              </div>
+                              <div className="col-md-8">
+                                  <div className="card-body">
+                                      <h5 className="card-title" style={{ color: "darkgrey" }}>{item.name}</h5>
+                                      <p className="card-text"><strong>Description:</strong> {item.description}</p>
+                                      <p className="card-text"><strong>Price:</strong> {item.price}</p>
+                                      <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p>
+                                      <p className="card-text"><strong>Category:</strong> {item.category}</p>
+                                      <div className="d-flex justify-content-between align-items-center">
+                                          <button className="btn btn-secondary mr-2">Add To Wishlist</button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              ))}
+          </div>
+      </div>
   );
 }
 

@@ -4,7 +4,6 @@ import CheckoutInfoPage from './pages/CheckoutInfoPage';
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
 import UserProfile from "./components/UserTable";
-import ProductsTable from './components/ProductsTable';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import ReviewsPage from './pages/ReviewsPage';
@@ -28,12 +27,12 @@ function App() {
       
       <Router>
         <Switch>
-          <Route exact path='/'><MainPage isAuthenticated={isAuthenticated} /></Route>
-          <Route exact path='/products'><ProductsTable userId={userId} isAuthenticated={isAuthenticated} /></Route>
+          <Route exact path='/'><MainPage isAuthenticated={isAuthenticated} userId={userId} /></Route>
+          {/* <Route exact path='/products'>{<MainPage userId={userId}/>}</Route> */}
           <Route exact path='/login'><LoginPage setIsAuthenticated={setIsAuthenticated} setUserId={setUserId} /></Route>
           <Route exact path="/register" ><SignUpPage /></Route>
           <Route exact path="/reviews" ><ReviewsPage /></Route>
-          <Route exact path='/shoppingcart'><ShoppingCartPage /></Route>
+          <Route exact path='/shoppingcart'><ShoppingCartPage userId={userId}/></Route>
           <Route exact path="/userprofile">{isAuthenticated ? <UserProfilePage userId={userId} /> : <Redirect to='/login' />}</Route>
          <Route  exact path ="/wishlists"><WishlistPage userId={userId} /></Route>
           <Route exact path="/checkout" ><CheckoutInfoPage /></Route>
