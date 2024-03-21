@@ -19,10 +19,12 @@ function Login({ setIsAuthenticated, setUserId }) {
       const data = await response.json();
 
       if (response.ok) {
-        const { userId } = data; // Extract userId from response data
+        const { id } = data;
+      
+        console.log(data)
         
         setIsAuthenticated(true);
-        setUserId(userId); 
+        setUserId(id); 
         history.push('/');
       } else {
         window.alert(data.message || 'Login failed');
