@@ -13,7 +13,6 @@ function WishlistTable({ userId }) {
                 .then(response => response.json())
                 .then(data => {
                     setWishlistItems(data.wishlist);
-                    
                 })
                 .catch(error => {
                     console.error('Error fetching wishlist:', error);
@@ -28,8 +27,29 @@ function WishlistTable({ userId }) {
     if (!userId) {
         return <button onClick={handleLog} className="btn btn-secondary mr-2">login first</button>;
     }
-
-
+    function deleteFromWishlist(productId) {
+        fetch(`https://backend-phase5-project.onrender.com/wishlists/remove/${productId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_id: userId }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to delete from wishlist');
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert(data.message); 
+        })
+        .catch(error => {
+            console.error('Error deleting from wishlist:', error);
+            alert('An error occurred while deleting from wishlist. Please try again later.');
+        });
+    }
+    
     return (
         <div className="container">
             <h2>My Wishlist</h2>
@@ -54,7 +74,8 @@ function WishlistTable({ userId }) {
                                         <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p>
                                         <p className="card-text"><strong>Category:</strong> {item.category}</p>
                                         <div className="d-flex justify-content-between align-items-center">
-                                            <button className="btn btn-secondary mr-2">Add To Wishlist</button>
+                                        <button className="btn btn-secondary mr-2" onClick={() => deleteFromWishlist(item.id)}>Delete from Wishlist</button>
+
                                         </div>
                                     </div>
                                 </div>
