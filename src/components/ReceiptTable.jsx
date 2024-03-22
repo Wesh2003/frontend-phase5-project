@@ -4,10 +4,10 @@ import {Container, Table, Button} from 'react-bootstrap';
 
 function ReceiptTable({ orderDetails}) {
   const  [receipts, setReceipts] = useState([])
-  const [cartItems, setCartItems] = useState([]);
-  const [total, setTotal] = useState('')
+//   const [cartItems, setCartItems] = useState([]);
+//   const [total, setTotal] = useState('')
 
-  const userId = localStorage.getItem("id");
+//   const userId = localStorage.getItem("id");
 
   useEffect(()=>{
       async function fetchReceiptData(){
@@ -42,28 +42,28 @@ function ReceiptTable({ orderDetails}) {
 
     } 
 
-    useEffect(() => {
-        fetch(`https://backend-phase5-project.onrender.com/shoppingcart/${userId}`)
-            .then(response => response.json())
-            .then(data => {
-                setCartItems(data.cart); // Assuming 'cart' is the key containing your array of items
-                calculateTotalCost();
-            })
-            .catch(error => {
-                console.error('Error fetching shopping cart items:', error);
-            });
+    // useEffect(() => {
+    //     fetch(`https://backend-phase5-project.onrender.com/shoppingcart/${userId}`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             setCartItems(data.cart); // Assuming 'cart' is the key containing your array of items
+    //             calculateTotalCost();
+    //         })
+    //         .catch(error => {
+    //             console.error('Error fetching shopping cart items:', error);
+    //         });
             
-        }, [userId]); // Make sure to include userId as a dependency of useEffect
+    //     }, [userId]); // Make sure to include userId as a dependency of useEffect
 
-    function calculateTotalCost(){
-        let totalcost = 0;
-        for (let item of cartItems){
-            totalcost += item.price;
-            console.log(item.price);
-        }
-        console.log(totalcost)
-        setTotal(totalcost.toFixed(2));
-    }
+    // function calculateTotalCost(){
+    //     let totalcost = 0;
+    //     for (let item of cartItems){
+    //         totalcost += item.price;
+    //         console.log(item.price);
+    //     }
+    //     console.log(totalcost)
+    //     setTotal(totalcost.toFixed(2));
+    // }
 
 
   return (
@@ -79,7 +79,7 @@ function ReceiptTable({ orderDetails}) {
                     <th>Delivery address</th>
                     <th>City</th>
                     <th>Created at:</th>
-                    <th>Total cost</th>
+                    {/* <th>Total cost</th> */}
                     <th>Delete receipt</th>
                     </tr>
                 </thead>
@@ -93,7 +93,7 @@ function ReceiptTable({ orderDetails}) {
                         {/* <td>{item.user && item.user.name}</td>
                         <td>{item.user && item.user.email}</td>
                         <td>{item.user && item.user.phone}</td> */}
-                        <td>{total}</td>
+                        {/* <td>{total}</td> */}
                         <td><Button variant='danger' onClick={() => handleDelete(item.id)}>Cancel Delivery</Button></td>
                         {/* <td><Button variant='success'><Link to={`/receipt/${item.id}/edit`} className="link">Update Review</Link></Button></td>  */}
                         {/* Maybe we can update the review? */}
