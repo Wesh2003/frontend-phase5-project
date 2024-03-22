@@ -80,7 +80,7 @@ function ProductsTable() {
                                         alt="Product"
                                         className="card-img"
                                         style={{ objectFit: 'auto' }}
-                                    />
+                                    />y
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
@@ -88,7 +88,7 @@ function ProductsTable() {
                                         <h5 className="card-title" style={{ color: "black" }}>{item.name}</h5>
                                         <p className="card-text"><strong>Description:</strong> {item.description}</p>
                                         <p className="card-text"><strong>Price:</strong> {item.price}</p>
-                                        <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p>
+                                        {/* <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p> */}
                                         <p className="card-text"><strong>Category:</strong> {item.category}</p>
                                         <div className="d-flex justify-content-between align-items-center">
                                             {/* Use handleAddToCart function to trigger the rendering of the ShoppingCart component */}

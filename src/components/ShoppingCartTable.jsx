@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-function ShoppingCart() {
+
+function ShoppingCart({userId}) {
   const [cartItems, setCartItems] = useState([]);
   const userId = localStorage.getItem("id");
 

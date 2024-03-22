@@ -8,7 +8,7 @@ function Footer() {
   };
 
   return (
-    <div className="fixed-bottom">
+    <div >
     <div className="footer">
           <div className="contact-support">
             <h2>Contact Customer Support</h2>

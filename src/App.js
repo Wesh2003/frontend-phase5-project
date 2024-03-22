@@ -4,7 +4,6 @@ import './App.css';
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
 import UserProfile from "./components/UserTable";
-import ProductsTable from './components/ProductsTable';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import ReviewsPage from './pages/ReviewsPage';
@@ -16,7 +15,8 @@ import CustomerCarePage from './pages/CustomerCarePage';
 import WishlistPage from  './pages/WishlistPage';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import HelpPage from './pages/HelpPage';
-import CheckoutInfoPage from './pages/CheckoutInfoPage';
+import EntryPage from './pages/EntryPage';
+// import WishlistTable from './components/WishlistTable';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -28,12 +28,15 @@ function App() {
       
       <Router>
         <Switch>
-          <Route exact path='/'><MainPage isAuthenticated={isAuthenticated} /></Route>
-          <Route exact path='/products'><ProductsTable userId={userId} isAuthenticated={isAuthenticated} /></Route>
+
+          <Route exact path='/home'><MainPage isAuthenticated={isAuthenticated} userId={userId} /></Route>
+          {/* <Route exact path='/products'>{<MainPage userId={userId}/>}</Route> */}
+        <Route exact path='/'><EntryPage/></Route>
+         
           <Route exact path='/login'><LoginPage setIsAuthenticated={setIsAuthenticated} setUserId={setUserId} /></Route>
           <Route exact path="/register" ><SignUpPage /></Route>
           <Route exact path="/reviews" ><ReviewsPage /></Route>
-          <Route exact path='/shoppingcart'><ShoppingCartPage setIsAuthenticated={setIsAuthenticated}/></Route>
+          <Route exact path='/shoppingcart'><ShoppingCartPage userId={userId}/></Route>
           <Route exact path="/userprofile">{isAuthenticated ? <UserProfilePage userId={userId} /> : <Redirect to='/login' />}</Route>
           <Route exact path="/wishlists"><WishlistPage userId={userId} setIsAuthenticated={setIsAuthenticated}/></Route>
 

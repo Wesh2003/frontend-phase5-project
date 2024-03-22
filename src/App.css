@@ -175,3 +175,82 @@
   margin-right: 90px;
   padding: 20px 20px 20px 40px;
 }
+
+.entry-page{
+  display: flex;
+  flex-wrap: nowrap;
+  width: 1600px;
+  height: 900px;
+  background-color: rgb(255, 255, 255);
+}
+.entry-image{
+  margin-top: -130px;
+  margin-left: -30px;
+  width: 700px;
+  height: 700px;
+  object-fit: scale-down;
+}
+.entry-text{
+  width: 710px;
+  height: 700px;
+  padding-top: 50px;
+  padding-left: 10px;
+}
+.entry-login-btn{
+  background-color: #002aff;
+  width: 500px;
+
+}
+.link{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+.entry-login-btn2{
+  background-color: #f83e3e;
+  width: 500px;
+
+}
+.signup-form{
+  background-color: #212121;
+  width:800px;
+  height: 600px;
+  margin-top:150px;
+  margin-left: 300px;
+}
+.span-link{
+  color:blue
+}
+.signup-inputs{
+  width: 500px;
+  margin-left: 15px;
+}
+.signup-labels{
+  padding-left: 40px;
+  font-size: 25px;
+  font-weight: bold;
+  color: aliceblue;
+}
+.sign-heading{
+  padding-left:300px;
+  padding-top: 50px;
+  color: aliceblue;
+}
+.sign-button{
+  width: 200px;
+  background-color: orange;
+  color:aliceblue;
+  margin-left:250px;
+  font-weight:bolder;
+  height:40px;
+
+}
+.user-icon{
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 100%;
+  padding: 10px 10px 10px 10px;
+  margin-right: 40px;
+
+}
