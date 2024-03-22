@@ -34,7 +34,7 @@ function ShoppingCart() {
   };
   
   return (
-    <div>
+    <div className = 'shopping-cart-page'>
       <h2>Shopping Cart</h2>
       <ul>
         {cartItems.map(item => (

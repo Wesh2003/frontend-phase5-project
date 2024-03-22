@@ -14,9 +14,11 @@ function CheckoutForm() {
   const [users, setUsers]= useState([])
   const [delivery_address, setDelivery_address]=useState('')
   const [city, setCity]=useState('')
+  const [cartItems, setCartItems] = useState([]);
+  const [total, setTotal] = useState('')
   const history = useHistory();
 
-  
+  const userId = localStorage.getItem("id");
     useEffect(() => {
         fetch("https://backend-phase5-project.onrender.com/users")
             .then((r) => r.json())
@@ -25,6 +27,19 @@ function CheckoutForm() {
                 setUsers(data)
                 });
         }, []);
+
+    useEffect(() => {
+        fetch(`https://backend-phase5-project.onrender.com/shoppingcart/${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                setCartItems(data.cart); // Assuming 'cart' is the key containing your array of items
+                calculateTotalCost();
+            })
+            .catch(error => {
+                console.error('Error fetching shopping cart items:', error);
+            });
+            
+        }, [userId]); // Make sure to include userId as a dependency of useEffect
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -57,6 +72,18 @@ function CheckoutForm() {
   if  (loading){
     return <h4>Loading...</h4>
   }
+
+  function calculateTotalCost(){
+    let totalcost = 0;
+    for (let item of cartItems){
+        totalcost += item.price;
+        console.log(item.price)
+    }
+    console.log(totalcost)
+    setTotal(totalcost.toFixed(2));
+}
+
+
 
   return (
     <div>
@@ -95,6 +122,7 @@ function CheckoutForm() {
                             ))}
                         </Form.Select><br/>   
                     </Col>
+                    <h2>Total Cost:{total}</h2>
                 </Row>
                 <Button variant="primary" type="submit">
                     Place Order

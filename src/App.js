@@ -42,8 +42,8 @@ function App() {
           <Route exact path="/userprofile">{isAuthenticated ? <UserProfilePage userId={userId} /> : <Redirect to='/login' />}</Route>
           <Route exact path="/wishlists"><WishlistPage userId={userId} setIsAuthenticated={setIsAuthenticated}/></Route>
 
-          <Route exact path="/checkout" ><CheckoutInfoPage /></Route>
-          <Route exact path="/deliverystatus" ><DeliveryStatusPage /></Route>
+          <Route exact path="/checkout" ><CheckoutInfoPage userId={userId} /></Route>
+          <Route exact path="/deliverystatus" ><DeliveryStatusPage userId={userId} /></Route>
           <Route exact path="/customercare"><CustomerCarePage /></Route>
           <Route exact path="/help"><HelpPage /></Route>
           <SignUp />
