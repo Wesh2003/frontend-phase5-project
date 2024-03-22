@@ -50,7 +50,7 @@ function ReviewTable() {
                     <th>Desccription</th>
                     <th>Rating</th>
                     <th>Created at:</th>
-                    <th>Product Name</th>
+                    {/* <th>Product Name</th> */}
                     <th>User name</th>
                     <th>Delete</th>
                     </tr>
@@ -62,7 +62,7 @@ function ReviewTable() {
                         <td>{item.description}</td>
                         <td>{item.rating}</td>
                         <td>{item.created_at}</td>
-                        <td>{item.product && item.product.name}</td>
+                        {/* <td>{item.product && item.product.name}</td> */}
                         <td>{item.username}</td>
                         <td><Button variant='danger' onClick={() => handleDelete(item.id)}>Delete</Button></td>
                         {/* <td><Button variant='success'><Link to={`/reviews/${item.id}/edit`} className="link">Update Review</Link></Button></td>  */}
