@@ -29,6 +29,15 @@ function CheckoutForm() {
         }, []);
 
     useEffect(() => {
+        function calculateTotalCost(){
+            let totalcost = 0;
+            for (let item of cartItems){
+                totalcost += item.price;
+                console.log(item.price)
+            }
+            console.log(totalcost)
+            setTotal(totalcost.toFixed(2));
+        }
         fetch(`https://backend-phase5-project.onrender.com/shoppingcart/${userId}`)
             .then(response => response.json())
             .then(data => {
@@ -39,7 +48,7 @@ function CheckoutForm() {
                 console.error('Error fetching shopping cart items:', error);
             });
             
-        }, [userId,calculateTotalCost]); // Make sure to include userId as a dependency of useEffect
+        }, [userId, calculateTotalCost]); // Make sure to include userId as a dependency of useEffect
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -73,15 +82,6 @@ function CheckoutForm() {
     return <h4>Loading...</h4>
   }
 
-  function calculateTotalCost(){
-    let totalcost = 0;
-    for (let item of cartItems){
-        totalcost += item.price;
-        console.log(item.price)
-    }
-    console.log(totalcost)
-    setTotal(totalcost.toFixed(2));
-}
 
 
 
