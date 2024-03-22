@@ -73,10 +73,11 @@ function WishlistTable({ userId }) {
                                         <h5 className="card-title" style={{ color: "darkgrey" }}>{item.name}</h5>
                                         <p className="card-text"><strong>Description:</strong> {item.description}</p>
                                         <p className="card-text"><strong>Price:</strong> {item.price}</p>
-                                        <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p>
-                                        <p className="card-text"><strong>Category:</strong> {item.category}</p>
+                                        {/* <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p> */}
+                                        {/* <p className="card-text"><strong>Category:</strong> {item.category}</p> */}
+                                        
                                         <div className="d-flex justify-content-between align-items-center">
-                                           {console.log(item.product_id)}
+                                           {console.log(item)}
                                             
                                         <button className="btn btn-secondary mr-2" onClick={() => deleteFromWishlist(item.product_id)}>Delete from Wishlist</button>
 
