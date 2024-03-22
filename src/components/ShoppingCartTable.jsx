@@ -18,7 +18,7 @@ function ShoppingCart() {
       });
   }, [userId]); // Make sure to include userId as a dependency of useEffect
 
-  const handleDeleteItem = (productId) => {
+  const handleDeleteItem = (item,productId) => {
     fetch(`https://backend-phase5-project.onrender.com/shoppingcarts/${productId}`, {
         method: 'DELETE'
     })
@@ -26,6 +26,9 @@ function ShoppingCart() {
         if (response.ok) {
             // Assuming deletion was successful, remove the item from cartItems
             setCartItems(prevItems => prevItems.filter(item => item.product_id !== productId));
+            setCartItems(item.id !== item.id)
+            window.alert("Deleted")
+            
         } else {
             throw new Error('Failed to delete item from shopping cart');
         }
