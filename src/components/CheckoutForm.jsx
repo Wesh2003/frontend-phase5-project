@@ -18,7 +18,7 @@ function CheckoutForm() {
 //   const [total, setTotal] = useState('')
   const history = useHistory();
 
-  const userId = localStorage.getItem("id");
+//   const userId = localStorage.getItem("id");
     useEffect(() => {
         fetch("https://backend-phase5-project.onrender.com/users")
             .then((r) => r.json())

@@ -17,7 +17,6 @@ import CheckoutInfoPage from  './pages/CheckoutInfoPage';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import HelpPage from './pages/HelpPage';
 import EntryPage from './pages/EntryPage';
-import CheckoutInfoPage from './pages/CheckoutInfoPage';
 // import WishlistTable from './components/WishlistTable';
 
 

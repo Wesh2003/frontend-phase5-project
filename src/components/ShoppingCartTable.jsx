@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+// import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { Link } from "react-router-dom";
 
 
@@ -41,24 +41,22 @@ function ShoppingCart() {
     });
 };
 
-return (
-    <div>
-        <h2>Shopping Cart</h2>
-        <ul>
-            {cartItems.map(item => (
-                <li key={item.product_id}>
-                    <img src={item.image_url} alt={item.name} style={{ width: '100px', height: '100px' }} />
-                    <p>Name: {item.name}</p>
-                    <p>Price: ${item.price}</p>
-                    <button onClick={() => handleDeleteItem(item.product_id)}>Delete</button>
-                </li>
-            ))}
-        </ul>
-    </div>
-);
+// return (
+//     <div>
+//         <h2>Shopping Cart</h2>
+//         <ul>
+//             {cartItems.map(item => (
+//                 <li key={item.product_id}>
+//                     <img src={item.image_url} alt={item.name} style={{ width: '100px', height: '100px' }} />
+//                     <p>Name: {item.name}</p>
+//                     <p>Price: ${item.price}</p>
+//                     <button onClick={() => handleDeleteItem(item.product_id)}>Delete</button>
+//                 </li>
+//             ))}
+//         </ul>
+//     </div>
+// );
 
-
-  
   return (
     <div className = 'shopping-cart-page'>
       <h2>Shopping Cart</h2>
