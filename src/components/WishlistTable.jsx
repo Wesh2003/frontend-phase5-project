@@ -18,6 +18,8 @@ function WishlistTable({ userId }) {
                     console.error('Error fetching wishlist:', error);
                 });
         }
+        
+
     }, [userId]);
     
     function  handleLog(){
@@ -74,7 +76,9 @@ function WishlistTable({ userId }) {
                                         <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p>
                                         <p className="card-text"><strong>Category:</strong> {item.category}</p>
                                         <div className="d-flex justify-content-between align-items-center">
-                                        <button className="btn btn-secondary mr-2" onClick={() => deleteFromWishlist(item.id)}>Delete from Wishlist</button>
+                                           {console.log(item.product_id)}
+                                            
+                                        <button className="btn btn-secondary mr-2" onClick={() => deleteFromWishlist(item.product_id)}>Delete from Wishlist</button>
 
                                         </div>
                                     </div>
