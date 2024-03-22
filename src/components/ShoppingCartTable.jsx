@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from "react-router-dom";
+
+
 
 
 function ShoppingCart() {
@@ -54,7 +57,7 @@ return (
 
   
   return (
-    <div>
+    <div className = 'shopping-cart-page'>
       <h2>Shopping Cart</h2>
       <ul>
         {cartItems.map(item => (
@@ -66,6 +69,7 @@ return (
           </li>
         ))}
       </ul>
+      <button className='entry-login-btn'><Link to={`/checkout`} className="link">Proceed to Checkout</Link></button>
     </div>
   );
 }

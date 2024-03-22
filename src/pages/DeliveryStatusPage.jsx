@@ -11,11 +11,11 @@ import Footer from '../components/Footer';
 import ReceiptTable from '../components/ReceiptTable';
 
 
-function DeliveryStatusPage() {
+function DeliveryStatusPage({userId}) {
   return (
     <div>
         <NavBar/>
-        <ReceiptTable/>
+        <ReceiptTable userId={userId}/>
         <Footer/>
     </div>
   )

@@ -4,11 +4,11 @@ import Footer from '../components/Footer';
 import CheckoutForm from  '../components/CheckoutForm';
 
 
-function CheckoutInfoPage() {
+function CheckoutInfoPage({userId}) {
   return (
     <div>
         <NavBar/>
-        <CheckoutForm/>
+        <CheckoutForm userId={userId} />
         <Footer/>
     </div>
   )
