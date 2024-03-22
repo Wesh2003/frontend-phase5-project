@@ -23,6 +23,7 @@ function Login({ setIsAuthenticated, setUserId }) {
         
         // Store the access token in local storage
         localStorage.setItem(' access_token ',  access_token );
+        localStorage.setItem('id', id);
         
         // Set isAuthenticated and userId in the parent component
         setIsAuthenticated(true);

@@ -33,9 +33,9 @@ function App() {
           <Route exact path='/login'><LoginPage setIsAuthenticated={setIsAuthenticated} setUserId={setUserId} /></Route>
           <Route exact path="/register" ><SignUpPage /></Route>
           <Route exact path="/reviews" ><ReviewsPage /></Route>
-          <Route exact path='/shoppingcart'><ShoppingCartPage isAuthenticated={isAuthenticated}/></Route>
+          <Route exact path='/shoppingcart'><ShoppingCartPage setIsAuthenticated={setIsAuthenticated}/></Route>
           <Route exact path="/userprofile">{isAuthenticated ? <UserProfilePage userId={userId} /> : <Redirect to='/login' />}</Route>
-          <Route exact path="/wishlists"><WishlistPage userId={userId} isAuthenticated={isAuthenticated}/></Route>
+          <Route exact path="/wishlists"><WishlistPage userId={userId} setIsAuthenticated={setIsAuthenticated}/></Route>
 
           <Route exact path="/checkout" ><CheckoutInfoPage /></Route>
           <Route exact path="/deliverystatus" ><DeliveryStatusPage /></Route>

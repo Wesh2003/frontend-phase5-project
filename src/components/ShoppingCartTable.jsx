@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
-function ShoppingCart({isAuthenticated}) {
+function ShoppingCart() {
   const [cartItems, setCartItems] = useState([]);
+  const userId = localStorage.getItem("id");
 
   useEffect(() => {
-    fetch('/shoppingcart')
+    fetch(`https://backend-phase5-project.onrender.com/shoppingcart/shoppingcart/${userId}`)
       .then(response => response.json())
       .then(data => {
-        setCartItems(data);
-        isAuthenticated = true;
+        setCartItems(data.cart); // Assuming 'cart' is the key containing your array of items
       })
       .catch(error => {
         console.error('Error fetching shopping cart items:', error);
       });
-  }, []);
+  }, [userId]); // Make sure to include userId as a dependency of useEffect
 
   const handleDeleteItem = (id) => {
-    fetch(`/shoppingcart/${id}`, {
+    fetch(`https://backend-phase5-project.onrender.com/shoppingcart/${id}`, {
       method: 'DELETE'
     })
     .then(response => {
@@ -30,37 +30,14 @@ function ShoppingCart({isAuthenticated}) {
       console.error('Error deleting item from shopping cart:', error);
     });
   };
-  // const handleAddToCart = (item) => {
-  //   fetch('/add-to-cart', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(item),
-  //   })
-  //   .then(response => {
-  //     if (response.ok) {
-  //       // Assuming the response contains the updated cart items
-  //       return response.json();
-  //     } else {
-  //       console.error('Failed to add item to cart');
-  //     }
-  //   })
-  //   .then(data => {
-  //     setCartItems(data); // Update the UI with the updated cart items
-  //   })
-  //   .catch(error => {
-  //     console.error('Error adding item to cart:', error);
-  //   });
-  // };
-
+  
   return (
     <div>
       <h2>Shopping Cart</h2>
       <ul>
         {cartItems.map(item => (
           <li key={item.id}>
-            <img src={item.image} alt={item.name} style={{ width: '100px', height: '100px' }} />
+            <img src={item.image_url} alt={item.name} style={{ width: '100px', height: '100px' }} />
             <p>Name: {item.name}</p>
             <p>Price: ${item.price}</p>
             <button onClick={() => handleDeleteItem(item.id)}>Delete</button>

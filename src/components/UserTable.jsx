@@ -16,7 +16,7 @@ function UserProfile({ userId }) {
       });
       const data = await response.json();
       setUser(data);
-      console.log(data);
+      
     } catch (error) {
       console.log('Error in fetching User', error);
     }
@@ -26,7 +26,7 @@ function UserProfile({ userId }) {
     if (userId) {
       fetchUserData(userId);
     }
-  }, [userId]);
+  },);
 
   return (
     <div>
