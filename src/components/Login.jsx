@@ -33,7 +33,7 @@ function Login({ setIsAuthenticated, setUserId }) {
         console.log(id)
         
         // Redirect to home page
-        history.push('/');
+        history.push('/home');
       } else {
         window.alert(data.message || 'Login failed');
       }

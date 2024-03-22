@@ -13,10 +13,12 @@ import UserProfilePage from './pages/UserProfilePage';
 import DeliveryStatusPage from './pages/DeliveryStatusPage';
 import CustomerCarePage from './pages/CustomerCarePage';
 import WishlistPage from  './pages/WishlistPage';
+import CheckoutInfoPage from  './pages/CheckoutInfoPage';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import HelpPage from './pages/HelpPage';
 import EntryPage from './pages/EntryPage';
 // import WishlistTable from './components/WishlistTable';
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

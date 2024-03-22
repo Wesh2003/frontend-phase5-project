@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from "react-router-dom";
 
-
-function ShoppingCart({userId}) {
+function ShoppingCart() {
   const [cartItems, setCartItems] = useState([]);
   const userId = localStorage.getItem("id");
 
   useEffect(() => {
-    fetch(`https://backend-phase5-project.onrender.com/shoppingcart/shoppingcart/${userId}`)
+    fetch(`https://backend-phase5-project.onrender.com/shoppingcart/${userId}`)
       .then(response => response.json())
       .then(data => {
         setCartItems(data.cart); // Assuming 'cart' is the key containing your array of items
@@ -46,6 +46,7 @@ function ShoppingCart({userId}) {
           </li>
         ))}
       </ul>
+      <button className='entry-login-btn'><Link to={`/checkout`} className="link">Proceed to Checkout</Link></button>
     </div>
   );
 }
