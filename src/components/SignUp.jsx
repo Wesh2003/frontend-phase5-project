@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function SignUp() {
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     phone: '', // Added phone state
     password: '',
@@ -52,7 +52,7 @@ function SignUp() {
       <form onSubmit={handleSubmit}>
         <div >
           <label className='signup-labels' htmlFor="username">Username:</label>
-          <input className='signup-inputs' type="text" id="username" name="username" value={formData.name} onChange={handleChange} required />
+          <input className='signup-inputs' type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
         </div>
         <br></br>
         <div>
@@ -62,7 +62,7 @@ function SignUp() {
         <br></br>
         <div>
           <label className='signup-labels' htmlFor="phone">Phone:</label>
-          <input className='signup-inputs' type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required />
+          <input className='signup-inputs' type="number" id="phone" name="phone" value={formData.phone} onChange={handleChange} required />
         </div>
         <br></br>
         <div>

@@ -13,11 +13,13 @@ import UserProfilePage from './pages/UserProfilePage';
 import DeliveryStatusPage from './pages/DeliveryStatusPage';
 import CustomerCarePage from './pages/CustomerCarePage';
 import WishlistPage from  './pages/WishlistPage';
+import CheckoutInfoPage from  './pages/CheckoutInfoPage';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import HelpPage from './pages/HelpPage';
 import EntryPage from './pages/EntryPage';
 import CheckoutInfoPage from './pages/CheckoutInfoPage';
 // import WishlistTable from './components/WishlistTable';
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -41,8 +43,8 @@ function App() {
           <Route exact path="/userprofile">{isAuthenticated ? <UserProfilePage userId={userId} /> : <Redirect to='/login' />}</Route>
           <Route exact path="/wishlists"><WishlistPage userId={userId} setIsAuthenticated={setIsAuthenticated}/></Route>
 
-          <Route exact path="/checkout" ><CheckoutInfoPage /></Route>
-          <Route exact path="/deliverystatus" ><DeliveryStatusPage /></Route>
+          <Route exact path="/checkout" ><CheckoutInfoPage userId={userId} /></Route>
+          <Route exact path="/deliverystatus" ><DeliveryStatusPage userId={userId} /></Route>
           <Route exact path="/customercare"><CustomerCarePage /></Route>
           <Route exact path="/help"><HelpPage /></Route>
           <SignUp />
