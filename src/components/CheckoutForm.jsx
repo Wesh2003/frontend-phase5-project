@@ -39,7 +39,7 @@ function CheckoutForm() {
                 console.error('Error fetching shopping cart items:', error);
             });
             
-        }, [userId]); // Make sure to include userId as a dependency of useEffect
+        }, [userId,calculateTotalCost() ]); // Make sure to include userId as a dependency of useEffect
 
     const handleSubmit = async (e) => {
         e.preventDefault();
