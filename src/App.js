@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import CheckoutInfoPage from './pages/CheckoutInfoPage';
+
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
 import UserProfile from "./components/UserTable";
@@ -20,8 +20,8 @@ import EntryPage from './pages/EntryPage';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userId, setUserId] = useState(null);
-  console.log(userId)
+  const [userId, setUserId] = useState('');
+  
 
   return (
     <div>
@@ -38,7 +38,8 @@ function App() {
           <Route exact path="/reviews" ><ReviewsPage /></Route>
           <Route exact path='/shoppingcart'><ShoppingCartPage userId={userId}/></Route>
           <Route exact path="/userprofile">{isAuthenticated ? <UserProfilePage userId={userId} /> : <Redirect to='/login' />}</Route>
-         <Route  exact path ="/wishlists"><WishlistPage userId={userId} /></Route>
+          <Route exact path="/wishlists"><WishlistPage userId={userId} setIsAuthenticated={setIsAuthenticated}/></Route>
+
           <Route exact path="/checkout" ><CheckoutInfoPage /></Route>
           <Route exact path="/deliverystatus" ><DeliveryStatusPage /></Route>
           <Route exact path="/customercare"><CustomerCarePage /></Route>

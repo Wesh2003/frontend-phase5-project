@@ -4,67 +4,49 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function ShoppingCart({userId}) {
   const [cartItems, setCartItems] = useState([]);
-//   const [wishlistItems, setWishlistItems] = useState([]);
-  const history = useHistory()
-  console.log(userId);
+  const userId = localStorage.getItem("id");
 
   useEffect(() => {
-      console.log(userId);
-      if (userId) {
-          fetch(`https://backend-phase5-project.onrender.com/wishlists/${userId}`)
-              .then(response => response.json())
-              .then(data => {
-                  setCartItems(data.wishlist);
-              })
-              .catch(error => {
-                  console.error('Error fetching wishlist:', error);
-              });
+    fetch(`https://backend-phase5-project.onrender.com/shoppingcart/shoppingcart/${userId}`)
+      .then(response => response.json())
+      .then(data => {
+        setCartItems(data.cart); // Assuming 'cart' is the key containing your array of items
+      })
+      .catch(error => {
+        console.error('Error fetching shopping cart items:', error);
+      });
+  }, [userId]); // Make sure to include userId as a dependency of useEffect
+
+  const handleDeleteItem = (id) => {
+    fetch(`https://backend-phase5-project.onrender.com/shoppingcart/${id}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        setCartItems(prevItems => prevItems.filter(item => item.id !== id));
+      } else {
+        console.error('Failed to delete item from shopping cart');
       }
-  }, [userId]);
+    })
+    .catch(error => {
+      console.error('Error deleting item from shopping cart:', error);
+    });
+  };
   
-  function  handleLog(){
-      history.push( "/login" )
-  }
-  
-  if (!userId) {
-      return <button onClick={handleLog} className="btn btn-secondary mr-2">login first</button>;
-  }
-
-
   return (
-      <div className="container">
-          <h2>Shopping  Cart</h2>
-          <div className="row">
-              {cartItems.map((item) => (
-                  <div className="col-lg-6 col-md-6 col-sm-12 mb-4" key={item._id} id='entire-card'>
-                      <div className="card">
-                          <div className="row no-gutters">
-                              <div className="col-md-4" id='image-div'>
-                                  <img
-                                      src={item.image_url}
-                                      alt="Product"
-                                      className="card-img"
-                                      style={{ objectFit: 'contain' }}
-                                  />
-                              </div>
-                              <div className="col-md-8">
-                                  <div className="card-body">
-                                      <h5 className="card-title" style={{ color: "darkgrey" }}>{item.name}</h5>
-                                      <p className="card-text"><strong>Description:</strong> {item.description}</p>
-                                      <p className="card-text"><strong>Price:</strong> {item.price}</p>
-                                      <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p>
-                                      <p className="card-text"><strong>Category:</strong> {item.category}</p>
-                                      <div className="d-flex justify-content-between align-items-center">
-                                          <button className="btn btn-secondary mr-2">Add To Wishlist</button>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              ))}
-          </div>
-      </div>
+    <div>
+      <h2>Shopping Cart</h2>
+      <ul>
+        {cartItems.map(item => (
+          <li key={item.id}>
+            <img src={item.image_url} alt={item.name} style={{ width: '100px', height: '100px' }} />
+            <p>Name: {item.name}</p>
+            <p>Price: ${item.price}</p>
+            <button onClick={() => handleDeleteItem(item.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

@@ -15,7 +15,7 @@ function ShoppingCartPage({userId}) {
   return (
     <div>
         <NavBar/>
-        <ShoppingCartTable  userId={userId}/>
+        <ShoppingCartTable />
         <Footer/>
     </div>
   )

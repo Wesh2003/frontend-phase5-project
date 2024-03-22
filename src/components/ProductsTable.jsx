@@ -3,13 +3,14 @@ import SearchBar from './SearchBar';
 import CategoryFilter from './CategoryFilter';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import AddToWishlist from './AddToWishlist';
+import ShoppingCart from './ShoppingCartTable'; // Import the ShoppingCart component
 
-function ProductsTable({userId ,isAuthenticated} ) {
+function ProductsTable() {
     const [products, setProducts] = useState([]);
-    console.log(userId)
+    const [itemAddedToCart, setItemAddedToCart] = useState(false);
+    const userId = localStorage.getItem("id");
 
-    const [selectedCategory, setSelectedCategory] = useState('All Categories')
+    const [selectedCategory, setSelectedCategory] = useState('All Categories');
     useEffect(() => {
         fetch("https://backend-phase5-project.onrender.com/products")
             .then(response => response.json())
@@ -30,63 +31,34 @@ function ProductsTable({userId ,isAuthenticated} ) {
 
     const categories = ['All Categories', ...new Set(products.map(item => item.category))];
 
-    function handleAddToCart(item){
-        if (!userId) {
-            alert('Please log in to add items to your wishlist.');
-
-            return;
-        }
-
-        
-        fetch('https://backend-phase5-project.onrender.com/shoppingcart', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ user_id: userId, product_id: item}),
-        })
-        .then(response => {
+    async function handleAddToCart(item) {
+        const userId = localStorage.getItem("id");
+        const formData = {
+            product_id: item.id,
+            user_id: userId,
+            // Add other properties as needed
+        };
+    
+        try {
+            const response = await fetch(' https://backend-phase5-project.onrender.com/shoppingcart', {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+    
             if (!response.ok) {
-                throw new Error('Could not add to wishlist');
+                throw new Error('Could not add to cart');
             }
-            return response.json();
-        })
-        .then(data => {
-            alert(data.message); 
-        })
-        .catch(error => {
+            setItemAddedToCart(true);
+            window.prompt('added')
+        } catch (error) {
             console.error('Error:', error);
-        
-            alert('An error occurred while adding to wishlist. Please try again later.');
-        });
-    } 
-    function handleAddToWishlist(productId) {
-        
-    
-        if (!userId) {
-            alert('Please log in to add items to your wishlist.');
-            return;
+            // Handle error appropriately (e.g., display error message to user)
         }
-    
-        fetch('http://0.0.0.0:5009/wishlists/add', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ user_id: userId, product_id: productId }),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Could not add to wishlist');
-            }
-            return response.json();
-        })
-        .then(data => {
-            alert(data.message); 
-        });
     }
     
-     
 
     return (
         <div className="container">
@@ -99,10 +71,10 @@ function ProductsTable({userId ,isAuthenticated} ) {
             </div>
             <div className="row">
                 {handleFilterByCategory().map((item) => (
-                    <div className="col-lg-6 col-md-6 col-sm-12 mb-4" key={item._id} id = 'entire-card'>
+                    <div className="col-lg-6 col-md-6 col-sm-12 mb-4" key={item._id} id='entire-card'>
                         <div className="card">
                             <div className="row no-gutters">
-                                <div className="col-md-4" id= 'image-div'>
+                                <div className="col-md-4" id='image-div'>
                                     <img
                                         src={item.image_url}
                                         alt="Product"
@@ -112,17 +84,16 @@ function ProductsTable({userId ,isAuthenticated} ) {
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
-      
+
                                         <h5 className="card-title" style={{ color: "black" }}>{item.name}</h5>
                                         <p className="card-text"><strong>Description:</strong> {item.description}</p>
                                         <p className="card-text"><strong>Price:</strong> {item.price}</p>
                                         {/* <p className="card-text"><strong>Quantity:</strong> {item.quantity}</p> */}
                                         <p className="card-text"><strong>Category:</strong> {item.category}</p>
                                         <div className="d-flex justify-content-between align-items-center">
+                                            {/* Use handleAddToCart function to trigger the rendering of the ShoppingCart component */}
                                             <button className="btn btn-primary mr-2" onClick={() => handleAddToCart(item)}>Add To Cart</button>
-                                            <button className="btn btn-secondary mr-2" onClick={() => handleAddToWishlist(item.id)}>Add To Wishlist</button>
-
-                                            <button className="btn btn-info"><Link to={`/reviews`} className="link" id = 'reviewbutton'>Review</Link></button>
+                                            <button className="btn btn-info"><Link to={`/reviews`} className="link" id='reviewbutton'>Review</Link></button>
                                         </div>
                                     </div>
                                 </div>
@@ -131,8 +102,17 @@ function ProductsTable({userId ,isAuthenticated} ) {
                     </div>
                 ))}
             </div>
+            {/* Render the ShoppingCart component if an item is added to the cart */}
+            {itemAddedToCart && <ShoppingCart />}
         </div>
     );
 }
 
 export default ProductsTable;
+
+
+
+
+
+
+

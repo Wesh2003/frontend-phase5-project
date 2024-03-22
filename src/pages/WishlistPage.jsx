@@ -15,7 +15,7 @@ function WishlistPage({userId}) {
   return (
     <div>
         <NavBar/>
-        <WishlistTable userId ={userId}/>
+        <WishlistTable userId={userId} />
         <Footer/>
     </div>
   )

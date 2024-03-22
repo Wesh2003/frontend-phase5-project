@@ -13,6 +13,7 @@ function WishlistTable({ userId }) {
                 .then(response => response.json())
                 .then(data => {
                     setWishlistItems(data.wishlist);
+                    
                 })
                 .catch(error => {
                     console.error('Error fetching wishlist:', error);
